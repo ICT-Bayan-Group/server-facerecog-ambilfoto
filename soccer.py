@@ -33,7 +33,7 @@ CORS(app, resources={
 })
 
 # ==================== DROPBOX CONFIGURATION ====================
-DROPBOX_ACCESS_TOKEN ="sl.u.AGL0QyBr367qR1V3XddUdq-v7aOZPsrmJpt_5MEkP0UIR_j2ChqiuJxhPtTJJPIRZ6s443SHIyIToaN2DV1mtEPPwlXhVK_1EELpQ1MunwB-SWIlu4neElA6l1o2gi9vqL6IytTE5bKWVy2vtAcMJiSe6_KWxZYFrNnf0U0cSQDA-UfPZIkba0RW8nBA78PEpTCNLVqZOwU-38XG9P3qNwItFrfI-U_E5Y7k0rmP7fi-XtcpgcBhxUzlGO6EFi1sZUMx3u4JIZ0xl75Xcm9jMb7qPF1EjDQ0oFXCWgfnHpINLFYLkPmvlu7o4OoqHPcH_OrYPk2C-X1ceSmVunbuW4OZuNj7jOpasT7CSenKsPS7rbf_6qKpRU7RkGrqxsPWYA05NzQA3hOo8QiUPSZod6_eP4B8pW17_ITCoQBA_uduJIr_cZLFNjd-F3k-c_baveCd4Suwv32aWvbrOeNytCqi0TFo71ddt8OAP1qNPhW338GPRRKKDtNnYSjmNYA61SrYr1Ii5d7RCZGGT2wz68kZGS_bAihJtl4Dh4Bs2XJezmBmufyt6Zg9k5hGq1SEaAjFz4r7T059LVPwTDCgvv4b0zvEz0ak3x-Tzilxhvj_XepUfZrCM0kdGB7k1aRCPAhcNavvSMDjv9vFFU5yKIZg8bOHBTpfvqGxPvGNZq-cO1qOB-3gi5FZ7NPJPUtOwjTQIWfFY_2WYEJLoCxbLOwe8_CJltL3s10xRebyhIb3jFYClGw8ri_wh0pSAA6BNjUKGeHJtOdoWngiIwSDNiIn0JQm8fEdQonalOXaIpDP2EXi8YXDdwJdqH8GqR8WfBqtQlNtJNOojW-pDsOVRSDO2b836-oeyR5FJsRggtoaLQByNkciPoEGapD7NWNLeNtsETrMGi-tC6u7fhagWOHxJbPatkSPO7vnFgToxI_L4QcM9KiZQ-Q8PeV_droDO_iHknRszvQkxSCLJBumVXr2Qg6Ygk8KqntEofGZfu5rhqCYg3NqqCn01fBXLnh2qtPRX14kjqZq4LCLRKGBlSa_WhngULkBcyqwk5XZPBgukbR49ss_YmI3Tns-tio3KI-_QSi5BO1CFCMaFTP-Sl0JZYyWQPjVb6PZofEwjbx-LMzxYvN86Lyip09n9KlBw74fpwzrdWYubrnDGN8h77uPD5K3yYUqbVW4umO-Rsat5ne4BonSWxLOBZ_6VizI1SWIKv2qj8amtdFBmGqvuf3yeK7ztKv1uSNL25eHAm0p22BqyHEW0O-YdFRsrK-oUnIh6SYkmnbJBqmCRIoJXHdT_6Oq77lsOeHl6ZUGn5IZTTNg6bwX2pUM9HP6gfgMCY-p_brF9esEAgfTO7wT5hCmrNA-lmTDqLzCP4uM4HRicoiisEnQcBSij_oNb7JY7rUwDJNMXtWdPq_k4p1LgLL1k2lRf9fRlhV1hx3-3psi3DCj8zi78ekaMnD6prlkxo__e-_2e1xLMhX73zkbcK-TcNbeOP7ztcbakr9lBdoVqQ"
+DROPBOX_ACCESS_TOKEN ="sl.u.AGIVxgTzDgyJMez4dcOBMIyjxD715IQGVYo1-CQTwujLokROL7KkjSPUEJwmh4EnMe-zqjsKFAJ4q5F0Z4SWTE28BW-f5uNiR_o68AUMA14owj_QBH6HDYbZs7uYLOTIo5BaWD0cwkLYJvz2gTsGqcZOlQX2ojdo6ntQVpdcVq0Xh99aAlLjXavyGDDqsyDPUJS7eZbB2NvyUnL3hdhCc4N9n030xtjTC5Lpml9YdJVmcEMmQfkPVXWrAHYIIcDrLUop4F-PpbF7guPeICeeY4kI-NvQIJRsbxi6Ovoda1b21xNgNjFvegHeWMVEEkxLAww2eP8Uje418Bj4G6RcPJSyP8NeCVqzWR9_5CsMhVMr86v_lFakDY5_OehMVEL8AXFyBWIjeQwTqN7PRS0Sz37ClIWHnJXtn1CeK8H1z3-G5LWwS8ruL_XRAs8UK9taRx4-_yu2_vqZ_iWibN1IhUuSxbKt_D8lFFw5X8M6sKbWNJXdWU925NZFx8q-r17a1LqAxWatEbqYmVo5ZW9nnAne6hXw0iWKB8k6chbgRUBC0jYJj2q_bF38lG5fhfjIu04xdRvrYi22jDFv3BhnADWuKomm2vyqO7TdDO0UBjVspt1GKgt_E5TSuQUCpE6exFUbnl_1g4eLo6vdNmXYjdlBa8vkJhIny-Kzc4WzbI7XoqhZOg3a9HqajJJ9k6CcuzKkg_5iHrj13ITgdkwvs7p06kKgWEExvVbEJh3x6PXVWdZk2BRheB9g8CBJkQiB3nZb0VXCC6_hJYQQc97Kt_s6B4GB1mDR9jPYsitId1dJ8nE-306PkBRiHbRmduKwtJrdAF_5FX-qbFMnkDG5AsxeqV2qSo_81WI_tpfFWYuCgUZ0NogfX9vjOstoYisyBkTAF7ZOEnTzFWNRhg2KT46puxIZ4w-RfNnBOnuRDnYztYDnQa09K7UlkysO7ZqyzmJgMCbO57oF2cEkjne2NDnPkUAnN3iVIcOanG9FWQA_z4ePk_3I8FTJ5eoSVClle-UYMIBFjKV3maskugHqfPN9b2MpLb6FAiMLl60KmE64xG_OCloVR7acO17i3ZlvlIGGSQS4CsQqkZKpGm8_eWskjrv90iJGMJvF-YIolybWUnnGWtUc_ceHLocQaXe73HX3ocaLcKieqXje0IjeQRM0qWuUxzEtrIjWeJtZMD1ypmI0oOXB3P8bl6W88-RP2Z8u0C_WD6w-8vSEk7TnPTsZNfCI8TEsA7ge18ium9l6PT3NUMynx4ASpysRKwYSlZjpQjlWZLhXBmF2mUGXdSswUXmx0N-AYQNbkOuwgmro-Gkvf47FY-Vef8f9t1ZtFAL9WG5pl2q-fX16G7H9GIoS-5PvDHsrGeHOtOFR-EM7-GXws9V8tKTLGSVsqHzkTsK7UtbFrInA9_SaDiBBzjYBZcr_nbkRt6EPnBqGbT1bZ2pdr3dbbE3nm743wbY18KMtsnktSGmY0UywMKVGqh2Feyt20h-2oq8g3mw_dUUgjA"
 DROPBOX_FOLDER = "/tes-ambilfoto"
 
 # ==================== STORAGE PATHS ====================
@@ -486,7 +486,115 @@ def photographer_upload():
         print(f"❌ Upload error: {str(e)}")
         return jsonify({'success': False, 'error': str(e)})
         
-
+@app.route('/api/face/extract_embedding', methods=['POST', 'OPTIONS'])
+@cross_origin()
+def extract_face_embedding():
+    """
+    Extract face embedding from base64 image
+    Used by authentication backend for user registration and face login
+    """
+    if request.method == 'OPTIONS':
+        return '', 204
+    
+    try:
+        data = request.json
+        
+        # Validate input
+        if not data or 'face_image' not in data:
+            return jsonify({
+                'success': False,
+                'error': 'face_image is required'
+            }), 400
+        
+        image_data = data['face_image']
+        
+        # Handle base64 with or without prefix
+        if ',' in image_data:
+            image_data = image_data.split(',')[1]
+        
+        # Decode base64 image
+        try:
+            nparr = np.frombuffer(base64.b64decode(image_data), np.uint8)
+            frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+            
+            if frame is None:
+                return jsonify({
+                    'success': False,
+                    'error': 'Invalid image data'
+                }), 400
+                
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'error': f'Failed to decode image: {str(e)}'
+            }), 400
+        
+        # Convert to RGB for face detection
+        img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        img_pil = Image.fromarray(img_rgb)
+        
+        # Detect faces
+        boxes, probs = face_system.mtcnn.detect(img_pil)
+        
+        if boxes is None or len(boxes) == 0:
+            return jsonify({
+                'success': False,
+                'error': 'No face detected. Please ensure your face is clearly visible and well-lit.'
+            }), 400
+        
+        # Use the first (most prominent) face
+        box = boxes[0]
+        confidence = float(probs[0]) if probs is not None else 0.0
+        
+        # Validate face detection confidence
+        if confidence < 0.9:
+            return jsonify({
+                'success': False,
+                'error': 'Face detection confidence too low. Please use a clearer photo.'
+            }), 400
+        
+        # Extract face region with padding
+        x1, y1, x2, y2 = [int(coord) for coord in box]
+        
+        # Add padding
+        width = x2 - x1
+        height = y2 - y1
+        expand_x = int(width * 0.2)
+        expand_y = int(height * 0.25)
+        
+        x1 = max(0, x1 - expand_x)
+        y1 = max(0, y1 - expand_y)
+        x2 = min(frame.shape[1], x2 + expand_x)
+        y2 = min(frame.shape[0], y2 + expand_y)
+        
+        # Crop and enhance face
+        face_img = img_pil.crop((x1, y1, x2, y2))
+        face_img = face_system.enhance_face_image(face_img)
+        face_img = face_img.resize((160, 160), Image.LANCZOS)
+        
+        # Normalize face image
+        face_array = np.array(face_img).astype(np.float32)
+        face_array = (face_array - 127.5) / 128.0
+        face_tensor = torch.from_numpy(face_array).permute(2, 0, 1)
+        
+        # Extract embedding
+        embedding = face_system.extract_embedding(face_tensor)
+        
+        return jsonify({
+            'success': True,
+            'embedding': embedding.tolist(),
+            'confidence': confidence,
+            'face_detected': True,
+            'message': 'Face embedding extracted successfully'
+        })
+        
+    except Exception as e:
+        print(f"❌ Extract embedding error: {str(e)}")
+        return jsonify({
+            'success': False,
+            'error': f'Failed to process face: {str(e)}'
+        }), 500
+    
 @app.route('/api/photographer/photos', methods=['GET', 'OPTIONS'])
 @cross_origin()
 def get_photographer_photos():
