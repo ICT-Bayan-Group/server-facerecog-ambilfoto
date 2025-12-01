@@ -33,7 +33,7 @@ CORS(app, resources={
 })
 
 # ==================== DROPBOX CONFIGURATION ====================
-DROPBOX_ACCESS_TOKEN ="sl.u.AGIVxgTzDgyJMez4dcOBMIyjxD715IQGVYo1-CQTwujLokROL7KkjSPUEJwmh4EnMe-zqjsKFAJ4q5F0Z4SWTE28BW-f5uNiR_o68AUMA14owj_QBH6HDYbZs7uYLOTIo5BaWD0cwkLYJvz2gTsGqcZOlQX2ojdo6ntQVpdcVq0Xh99aAlLjXavyGDDqsyDPUJS7eZbB2NvyUnL3hdhCc4N9n030xtjTC5Lpml9YdJVmcEMmQfkPVXWrAHYIIcDrLUop4F-PpbF7guPeICeeY4kI-NvQIJRsbxi6Ovoda1b21xNgNjFvegHeWMVEEkxLAww2eP8Uje418Bj4G6RcPJSyP8NeCVqzWR9_5CsMhVMr86v_lFakDY5_OehMVEL8AXFyBWIjeQwTqN7PRS0Sz37ClIWHnJXtn1CeK8H1z3-G5LWwS8ruL_XRAs8UK9taRx4-_yu2_vqZ_iWibN1IhUuSxbKt_D8lFFw5X8M6sKbWNJXdWU925NZFx8q-r17a1LqAxWatEbqYmVo5ZW9nnAne6hXw0iWKB8k6chbgRUBC0jYJj2q_bF38lG5fhfjIu04xdRvrYi22jDFv3BhnADWuKomm2vyqO7TdDO0UBjVspt1GKgt_E5TSuQUCpE6exFUbnl_1g4eLo6vdNmXYjdlBa8vkJhIny-Kzc4WzbI7XoqhZOg3a9HqajJJ9k6CcuzKkg_5iHrj13ITgdkwvs7p06kKgWEExvVbEJh3x6PXVWdZk2BRheB9g8CBJkQiB3nZb0VXCC6_hJYQQc97Kt_s6B4GB1mDR9jPYsitId1dJ8nE-306PkBRiHbRmduKwtJrdAF_5FX-qbFMnkDG5AsxeqV2qSo_81WI_tpfFWYuCgUZ0NogfX9vjOstoYisyBkTAF7ZOEnTzFWNRhg2KT46puxIZ4w-RfNnBOnuRDnYztYDnQa09K7UlkysO7ZqyzmJgMCbO57oF2cEkjne2NDnPkUAnN3iVIcOanG9FWQA_z4ePk_3I8FTJ5eoSVClle-UYMIBFjKV3maskugHqfPN9b2MpLb6FAiMLl60KmE64xG_OCloVR7acO17i3ZlvlIGGSQS4CsQqkZKpGm8_eWskjrv90iJGMJvF-YIolybWUnnGWtUc_ceHLocQaXe73HX3ocaLcKieqXje0IjeQRM0qWuUxzEtrIjWeJtZMD1ypmI0oOXB3P8bl6W88-RP2Z8u0C_WD6w-8vSEk7TnPTsZNfCI8TEsA7ge18ium9l6PT3NUMynx4ASpysRKwYSlZjpQjlWZLhXBmF2mUGXdSswUXmx0N-AYQNbkOuwgmro-Gkvf47FY-Vef8f9t1ZtFAL9WG5pl2q-fX16G7H9GIoS-5PvDHsrGeHOtOFR-EM7-GXws9V8tKTLGSVsqHzkTsK7UtbFrInA9_SaDiBBzjYBZcr_nbkRt6EPnBqGbT1bZ2pdr3dbbE3nm743wbY18KMtsnktSGmY0UywMKVGqh2Feyt20h-2oq8g3mw_dUUgjA"
+DROPBOX_ACCESS_TOKEN ="sl.u.AGJh7lgmFmIhXQBE4iihrXQvJ3w7C5TfdSWr593nbM0oep2GTnXSQ5okpYbn3bVn8bsRbDJfBGOnu9v7t9mG99mgGR9sTW4Jp3VwKZWquA8jNGr8FTp5TJzDY42K4VJtDldzZ7Y5LAhE6g-Lra8sgA4R8dOXVYRp2LHra6jg0LdRBZp9-wUj0Jogule2hCrPlb5TSmxvJgPPuOdljvGwd-Ztb4bTnCRZQz5bBajUwgln0z7_CKKxxRJnmkV8GF7ZQpn15sn8qLg6kkr-kYfSBJWhgFaljCjXu6ol0ZKYAcCDJXVE8bh27sgszhZzZAQ40rEqJFnOpNgshCO7e6WuoVnGwEnJXsByMQHX6abGLu6dL9b947V-YJnRw6023DPP1w9kst15wuFjEryiHOZ0Kp2U7Ct0cQw8O6QXrBXaL-G7WjmyCK4IOs6T8Rd8FUW-Y8AO71sr1B6NIWORIYx61cD9AWGnuHaInaoaJH3PzB9DAYoGB1Z5mbM7me3ey_gTq6fIhFehrwXc2bpX3R60ml_GBsLSXXS8MS7G2L4n3c897zHYACYj3vnED1ishQXV_OVc8qO6poq-KcX-eeQBNwbEn73LfxpDr0iBjonBhhtEV7lK3FJIy6kcWfgR5CciOSIzsLQDs0VudIuIoG_FziNqVFQa7T5shuuVeC9Qj4Tl02xaoCoe96ijBS4--fuoZr6Ehk8VQQENwX1eNDRe6Cs5kNf36CU2t53LoA_xWK5Pc6sqV8ttkmR_EE1OlzEMjAx_Y6t8Mflt3rap4uIIc0vKmPkicViHLnyzdsnIFWPv5rxUh_2PcFF79nQ_gfP0-FqrGvaF2Pi-FjYPMq3IeUYFKnmHQgFVmw95YHTb8rzXteO_l7LkwrBNbbrPdAA10mIODIPCZQc6MwP33uBdXe51CYB859hv6vjCbNxYDnmPNAA9mrnzHNE-9I8ofxeV6xwAby9WaAOtWPFlTtxjQ60o8SqwKSPjb8wuRgAkMFotVrOhIgv9YZAA7P_IDmdMOM9Xesl6w9PZjUDZ1knDkoX5Opjuccj994NMdPNLvdTKXMrYMbnnnysUdAusAr6VKvUC26bVjhTcUg0hUJN9vVriIrB8FFpP-XKWSjko-emjxToo3IdGRykuyuwTgs3Td3Qd4A5vDfVWWAzMoQ04W6DZvkqrfk1FZbxHqOGxg8YlN8sBrQlV-q5bWMtoADcX-W0qeyvDbqhqNR6U_6Sn8aEYra_xP1rO4xPz5_2bjnFV3VLEt81RLxC_kp7KEjiFQ9NLGKORx4xHtIwoYJdmuSVOZfarRBTT64usd8HzopBA2vwguNVOELrh1I7tVvJNwRvs9EjGSi_UuJBQQ9kzWcVTKkg8o1aQGQq00FVbiY4wBbOuLu3ju5NSbmr7ZmRCFv1hfmcRNsPnCvFN7gz8MYm_d_QAiQoPdLpwHRc7a9dktMAY0Pj2rBIQIZOfKa5NjNyqMOo0ETQWJL5WWBszc9nGfJXmnCUNKycC18uIO21dNw"
 DROPBOX_FOLDER = "/tes-ambilfoto"
 
 # ==================== STORAGE PATHS ====================
@@ -96,27 +96,53 @@ class DropboxManager:
             return {'success': False, 'error': str(e)}
     
     def download_file(self, dropbox_path):
-        """Download file from Dropbox"""
+        """Download file from Dropbox with better error handling"""
         if not self.dbx:
+            print("❌ Dropbox not initialized")
             return None
         
         try:
+            print(f"   Downloading from Dropbox: {dropbox_path}")
             metadata, response = self.dbx.files_download(dropbox_path)
+            print(f"   ✅ Downloaded {len(response.content)} bytes")
             return BytesIO(response.content)
+            
+        except ApiError as e:
+            print(f"   ❌ Dropbox API Error: {str(e)}")
+            return None
+            
         except Exception as e:
-            print(f"❌ Download error: {e}")
+            print(f"   ❌ Download error: {str(e)}")
             return None
     
     def get_temporary_link(self, dropbox_path):
-        """Get temporary download link (4 hour expiry)"""
+        """Get temporary download link (4 hour expiry) with better error handling"""
         if not self.dbx:
+            print("❌ Dropbox not initialized")
             return None
         
         try:
+            print(f"   Requesting temp link for: {dropbox_path}")
             result = self.dbx.files_get_temporary_link(dropbox_path)
+            print(f"   ✅ Temp link generated: {result.link[:50]}...")
             return result.link
+            
+        except ApiError as e:
+            error_str = str(e)
+            print(f"   ❌ Dropbox API Error: {error_str}")
+            
+            # Check for specific errors
+            if 'not_found' in error_str.lower():
+                print(f"   📌 File not found in Dropbox: {dropbox_path}")
+            elif 'path' in error_str.lower():
+                print(f"   📌 Invalid path: {dropbox_path}")
+            elif 'auth' in error_str.lower():
+                print(f"   📌 Authentication error - token may be expired")
+            
+            return None
+            
         except Exception as e:
-            print(f"❌ Get link error: {e}")
+            print(f"   ❌ Unexpected error: {str(e)}")
             return None
     
     def create_folder(self, folder_path):
@@ -742,34 +768,97 @@ def serve_preview_image(photo_id):
 @app.route('/api/download/dropbox/<photo_id>', methods=['GET', 'OPTIONS'])
 @cross_origin()
 def download_from_dropbox(photo_id):
-    """Download ORIGINAL file from Dropbox ONLY"""
+    """Download ORIGINAL file from Dropbox with better error handling"""
     if request.method == 'OPTIONS':
         return '', 204
     
     try:
+        print(f"\n{'='*60}")
+        print(f"📥 Download Request for photo_id: {photo_id}")
+        
+        # Check if photo exists in database
         photo_data = face_system.photo_database['photos'].get(photo_id)
         if not photo_data:
-            return jsonify({'error': 'Photo not found'}), 404
+            print(f"❌ Photo not found in database")
+            return jsonify({
+                'success': False,
+                'error': 'Photo not found in database'
+            }), 404
         
+        print(f"✅ Photo found: {photo_data.get('filename')}")
+        
+        # Check if file is in Dropbox
         dropbox_path = photo_data.get('dropbox_path')
-        
         if not dropbox_path:
-            return jsonify({'error': 'File not in Dropbox'}), 404
+            print(f"❌ No Dropbox path for this photo")
+            return jsonify({
+                'success': False,
+                'error': 'File not stored in Dropbox'
+            }), 404
         
+        print(f"📍 Dropbox path: {dropbox_path}")
+        
+        # Check if Dropbox is connected
         if not dropbox_manager.dbx:
-            return jsonify({'error': 'Dropbox not connected'}), 503
+            print(f"❌ Dropbox not connected")
+            return jsonify({
+                'success': False,
+                'error': 'Dropbox service not available'
+            }), 503
         
-        # Get temporary download link from Dropbox
-        temp_link = dropbox_manager.get_temporary_link(dropbox_path)
-        if temp_link:
-            print(f"☁️  Redirecting to Dropbox: {dropbox_path}")
-            return redirect(temp_link)
+        print(f"✅ Dropbox connected")
         
-        return jsonify({'error': 'Could not generate download link'}), 500
+        # Try to get temporary download link
+        try:
+            print(f"🔗 Getting temporary download link...")
+            temp_link = dropbox_manager.get_temporary_link(dropbox_path)
+            
+            if temp_link:
+                print(f"✅ Temporary link generated successfully")
+                print(f"🌐 Redirecting to: {temp_link[:50]}...")
+                print(f"{'='*60}\n")
+                return redirect(temp_link)
+            else:
+                print(f"❌ Could not generate temporary link")
+                raise Exception("Failed to generate Dropbox temporary link")
+                
+        except Exception as dropbox_error:
+            print(f"❌ Dropbox error: {str(dropbox_error)}")
+            
+            # Try alternative: Download file and serve directly
+            print(f"🔄 Trying alternative: Direct download from Dropbox...")
+            try:
+                file_stream = dropbox_manager.download_file(dropbox_path)
+                
+                if file_stream:
+                    print(f"✅ File downloaded from Dropbox successfully")
+                    print(f"{'='*60}\n")
+                    
+                    filename = photo_data.get('filename', f'photo-{photo_id}.jpg')
+                    return send_file(
+                        file_stream,
+                        mimetype='image/jpeg',
+                        as_attachment=True,
+                        download_name=filename
+                    )
+                else:
+                    raise Exception("Failed to download file from Dropbox")
+                    
+            except Exception as download_error:
+                print(f"❌ Direct download failed: {str(download_error)}")
+                raise
         
     except Exception as e:
-        print(f"❌ Download error: {str(e)}")
-        return jsonify({'error': str(e)}), 500
+        error_msg = str(e)
+        print(f"❌ DOWNLOAD ERROR: {error_msg}")
+        print(f"{'='*60}\n")
+        
+        return jsonify({
+            'success': False,
+            'error': error_msg,
+            'photo_id': photo_id,
+            'details': 'Check server logs for more information'
+        }), 500
     
 @app.route('/api/photographer/delete/<photo_id>', methods=['DELETE', 'OPTIONS'])
 @cross_origin()
