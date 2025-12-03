@@ -33,7 +33,7 @@ CORS(app, resources={
 })
 
 # ==================== DROPBOX CONFIGURATION ====================
-DROPBOX_ACCESS_TOKEN ="sl.u.AGJh7lgmFmIhXQBE4iihrXQvJ3w7C5TfdSWr593nbM0oep2GTnXSQ5okpYbn3bVn8bsRbDJfBGOnu9v7t9mG99mgGR9sTW4Jp3VwKZWquA8jNGr8FTp5TJzDY42K4VJtDldzZ7Y5LAhE6g-Lra8sgA4R8dOXVYRp2LHra6jg0LdRBZp9-wUj0Jogule2hCrPlb5TSmxvJgPPuOdljvGwd-Ztb4bTnCRZQz5bBajUwgln0z7_CKKxxRJnmkV8GF7ZQpn15sn8qLg6kkr-kYfSBJWhgFaljCjXu6ol0ZKYAcCDJXVE8bh27sgszhZzZAQ40rEqJFnOpNgshCO7e6WuoVnGwEnJXsByMQHX6abGLu6dL9b947V-YJnRw6023DPP1w9kst15wuFjEryiHOZ0Kp2U7Ct0cQw8O6QXrBXaL-G7WjmyCK4IOs6T8Rd8FUW-Y8AO71sr1B6NIWORIYx61cD9AWGnuHaInaoaJH3PzB9DAYoGB1Z5mbM7me3ey_gTq6fIhFehrwXc2bpX3R60ml_GBsLSXXS8MS7G2L4n3c897zHYACYj3vnED1ishQXV_OVc8qO6poq-KcX-eeQBNwbEn73LfxpDr0iBjonBhhtEV7lK3FJIy6kcWfgR5CciOSIzsLQDs0VudIuIoG_FziNqVFQa7T5shuuVeC9Qj4Tl02xaoCoe96ijBS4--fuoZr6Ehk8VQQENwX1eNDRe6Cs5kNf36CU2t53LoA_xWK5Pc6sqV8ttkmR_EE1OlzEMjAx_Y6t8Mflt3rap4uIIc0vKmPkicViHLnyzdsnIFWPv5rxUh_2PcFF79nQ_gfP0-FqrGvaF2Pi-FjYPMq3IeUYFKnmHQgFVmw95YHTb8rzXteO_l7LkwrBNbbrPdAA10mIODIPCZQc6MwP33uBdXe51CYB859hv6vjCbNxYDnmPNAA9mrnzHNE-9I8ofxeV6xwAby9WaAOtWPFlTtxjQ60o8SqwKSPjb8wuRgAkMFotVrOhIgv9YZAA7P_IDmdMOM9Xesl6w9PZjUDZ1knDkoX5Opjuccj994NMdPNLvdTKXMrYMbnnnysUdAusAr6VKvUC26bVjhTcUg0hUJN9vVriIrB8FFpP-XKWSjko-emjxToo3IdGRykuyuwTgs3Td3Qd4A5vDfVWWAzMoQ04W6DZvkqrfk1FZbxHqOGxg8YlN8sBrQlV-q5bWMtoADcX-W0qeyvDbqhqNR6U_6Sn8aEYra_xP1rO4xPz5_2bjnFV3VLEt81RLxC_kp7KEjiFQ9NLGKORx4xHtIwoYJdmuSVOZfarRBTT64usd8HzopBA2vwguNVOELrh1I7tVvJNwRvs9EjGSi_UuJBQQ9kzWcVTKkg8o1aQGQq00FVbiY4wBbOuLu3ju5NSbmr7ZmRCFv1hfmcRNsPnCvFN7gz8MYm_d_QAiQoPdLpwHRc7a9dktMAY0Pj2rBIQIZOfKa5NjNyqMOo0ETQWJL5WWBszc9nGfJXmnCUNKycC18uIO21dNw"
+DROPBOX_ACCESS_TOKEN ="sl.u.AGJAgOJqdS0BMqg8ubB8iXc80JQ3B-7xx1g7iE9PMu_xB5oqy3P98IF-5SLCbsC-4YioP4GKOjyFe9IDWU33QMNSZ-uj7krmS6CAa2Sz_5h8z1DMhpUayTlOIb_QtLkPGsY98IlVyFPzxhcTuRoWUii8qtSOFNGRjRDyEeVkYA7BFVOljOZFdpYn3tPLkWnifIJ3Azo086bLt0bo9o7Gmvbh_v434YAd92l9baPVav1YEbWpBYT32-QHVsdzSI14fposVZ4VPu4hh8hVFK7Gl2Nluwb_-unVs4eba9x3ltrg_w6S-SKe4AqrKD5-LkmSIzQeBoNRsKJo0IPTmpToR4Nho2Vq2dna-fMGDjALPsxyJSSNOEDJKJQnswcZl_hGwUW_IlSGchZOB-gKrXoC8vHcWYV5KdeV79ee8pJVf7dL3Hm-OUosBeT9TY2IkOhbS8loRgTiUHJKN77TmhTPYAr43r1Xmdz1xpgoKdQz1Hd5YfYCUJWPwvNlPaBpOicB7e1PCIfjqzrdITwNizLEE7csWF14bEoHsNqcx2HcPYI4fvCfI-x4b0h7EHg0k0_LlwX5SdOg-pdrkWWXgr-VxMHnN3L7HEsousmBu-zK-oZVOJLXmspzhoMLf6NA8XioHCMGYbK_k7ShNdTsSaH5Ds_Ea5TQ4dojcADfBKm5uiojuagyCEAEcT5wLh2CfPpkZhfwv5h5juVwXD7g3_YeNEl8yUUiEZfBlYgJbozEhMA2elzcfVDHYrm-w5soRVcawGne3q5j1ZDrOO8gThhNJWSEodnkVj6EOeG8jL_aUUkajLYMpYtzg5iwuV4J6eBCNM2BfILDVn8xsw0DeqyZj8PPRNqA-CEWVwoveZNSZCFw1Ku5v8hSAnjIz5UFGp3Jqu0NRf2AXbvlBeUMKRq9dKvIbsMNa7r2DiS8q93frHOPIFV210GyODy48Mk_JAVoaYsAMNxkn1Fl5ufYLhJo3UzVWkqmKgs18zimXYDxY119k67mELmANy9EscezO_3kE3hcp3pRGdXAgzvlnIfcJR76QABDtzOzYW4-GhvF3KyHO3PFxfuVMLM0jzFuBs25ePZ924wIJ3IKlnvHcabjYAi2xrwBDjF7VVklQCXzhYS0KDmFP-UyxKoHs_pZTPKpiZzcxL6E3LWydT9pMUUw-spGP-N5unmYKteDDIeg2eHaRmxnbQy_V85vctd4xakPUH9oFdfG8-asoDEzoXTVnsQ35LnJZp-FUrrNeVCl7Zb5pBd5CZvJkZG9BLaaifGayRUcCRLBL44VM5wWYPNmzYhA7-IqUtrNLrtNaawJfeWsOWXBBSr2txTGaOW5pGiu-cZ_DYyV1M8S21upxoAZHRzHvJ0JlpYy_qp_8bJLqJGsflOhSD6uQ5UdWEKxKHQDBYw7eif5_Sh8o-aN6m7SFhu58MNMlp3LmtabDQYLYGnm-SbfKGRrnG3An88MegOO_qSok6hB2_6KCk-k0U-HwS6SBm_vd-Cw_r75o5v1FXoXHw"
 DROPBOX_FOLDER = "/tes-ambilfoto"
 
 # ==================== STORAGE PATHS ====================
@@ -423,82 +423,148 @@ def photographer_upload():
     
     try:
         data = request.json
+        
+        # Validate required fields
+        if not data:
+            return jsonify({
+                'success': False,
+                'error': 'No data provided'
+            }), 400
+        
+        if 'image' not in data or 'filename' not in data:
+            return jsonify({
+                'success': False,
+                'error': 'image and filename are required'
+            }), 400
+        
         image_data = data['image']
         filename = data['filename']
         metadata = data.get('metadata', {})
         
+        # Ensure metadata has all required fields with defaults
+        complete_metadata = {
+            'event_id': metadata.get('event_id', ''),
+            'event_name': metadata.get('event_name', 'Untitled Event'),
+            'event_type': metadata.get('event_type', 'general'),
+            'event_date': metadata.get('event_date', datetime.now().strftime('%Y-%m-%d')),
+            'location': metadata.get('location', 'Not specified'),
+            'photographer_id': metadata.get('photographer_id', ''),
+            'photographer_name': metadata.get('photographer_name', 'Photographer'),
+            'uploaded_by': metadata.get('uploaded_by', ''),
+            'upload_timestamp': metadata.get('upload_timestamp', datetime.now().isoformat())
+        }
+        
+        print('='*70)
+        print('📝 Upload Request Received')
+        print('='*70)
+        print(f'📸 Filename: {filename}')
+        print(f'📋 Metadata:')
+        for key, value in complete_metadata.items():
+            print(f'   {key}: {value}')
+        print('='*70)
+        
         # Decode image
-        nparr = np.frombuffer(base64.b64decode(image_data.split(',')[1]), np.uint8)
-        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        try:
+            if ',' in image_data:
+                image_data = image_data.split(',')[1]
+            nparr = np.frombuffer(base64.b64decode(image_data), np.uint8)
+            img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+            
+            if img is None:
+                return jsonify({
+                    'success': False,
+                    'error': 'Invalid image data'
+                }), 400
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'error': f'Failed to decode image: {str(e)}'
+            }), 400
         
         # Generate unique filename
         name, ext = os.path.splitext(filename)
         unique_filename = filename
         counter = 1
         
-        # Check if filename exists in database
         while any(p['filename'] == unique_filename for p in face_system.photo_database['photos'].values()):
             unique_filename = f"{name}_{counter}{ext}"
             counter += 1
         
-        # STEP 1: Perform face detection on image array (in memory)
-        faces_data = face_system.detect_faces_from_image_array(img)
-        print(f"🔍 Detected {len(faces_data)} faces")
+        if unique_filename != filename:
+            print(f'🔄 Renamed: {filename} → {unique_filename}')
         
-        # STEP 2: Convert image to bytes
-        _, buffer = cv2.imencode(ext, img)
+        # STEP 1: Face detection
+        print('🔍 Detecting faces...')
+        faces_data = face_system.detect_faces_from_image_array(img)
+        print(f'✅ Detected {len(faces_data)} face(s)')
+        
+        # STEP 2: Convert to bytes
+        _, buffer = cv2.imencode(ext if ext else '.jpg', img)
         image_bytes = buffer.tobytes()
         
-        # STEP 3: Upload ORIGINAL directly to Dropbox (NO local save)
+        # STEP 3: Upload to Dropbox
+        print('☁️  Uploading to Dropbox...')
         dropbox_path = f"{DROPBOX_FOLDER}/{unique_filename}"
         dropbox_result = dropbox_manager.upload_from_memory(image_bytes, dropbox_path)
         
         if not dropbox_result['success']:
+            error_msg = dropbox_result.get('error', 'Unknown error')
+            print(f'❌ Dropbox upload failed: {error_msg}')
             return jsonify({
-                'success': False, 
-                'error': f"Dropbox upload failed: {dropbox_result.get('error', 'Unknown error')}"
-            })
+                'success': False,
+                'error': f"Dropbox upload failed: {error_msg}"
+            }), 500
         
-        print(f"☁️  Uploaded to Dropbox: {dropbox_path}")
+        print(f'✅ Uploaded to: {dropbox_path}')
         
-        # STEP 4: Create COMPRESSED version for local preview
+        # STEP 4: Create compressed version
+        print('📦 Creating compressed version...')
         compressed_path = os.path.join(UPLOAD_COMPRESSED, unique_filename)
-        
-        # Save temp file for compression
         temp_path = os.path.join(UPLOAD_TEMP, unique_filename)
-        cv2.imwrite(temp_path, img)
         
-        compress_success = compressor.compress_for_preview(
-            temp_path, 
-            compressed_path, 
-            max_size_kb=100
-        )
-        
-        # Delete temp file
-        if os.path.exists(temp_path):
-            os.remove(temp_path)
-        
-        if compress_success:
-            compressed_size = os.path.getsize(compressed_path) / 1024
-            print(f"📦 Compressed for preview: {compressed_path} ({compressed_size:.1f}KB)")
-        else:
-            print(f"⚠️  Compression failed")
+        try:
+            cv2.imwrite(temp_path, img)
+            compress_success = compressor.compress_for_preview(
+                temp_path,
+                compressed_path,
+                max_size_kb=100
+            )
+            
+            if os.path.exists(temp_path):
+                os.remove(temp_path)
+            
+            if compress_success:
+                compressed_size = os.path.getsize(compressed_path) / 1024
+                print(f'✅ Compressed: {compressed_size:.1f}KB')
+            else:
+                print('⚠️  Compression failed')
+                compressed_path = None
+        except Exception as e:
+            print(f'⚠️  Compression error: {str(e)}')
             compressed_path = None
         
-        # STEP 5: Store in database (NO local original path)
+        # STEP 5: Save to database
         photo_id = str(uuid.uuid4())
         face_system.photo_database['photos'][photo_id] = {
-            'path_original': None,  # ✅ NO LOCAL ORIGINAL
+            'path_original': None,
             'path_compressed': compressed_path,
             'filename': unique_filename,
             'faces_data': faces_data,
-            'metadata': metadata,
+            'metadata': complete_metadata,
             'uploaded_at': datetime.now().isoformat(),
-            'dropbox_path': dropbox_path,  # ✅ ONLY DROPBOX PATH
+            'dropbox_path': dropbox_path,
             'dropbox_link': dropbox_result.get('shared_link', None)
         }
         
         face_system.save_database()
+        
+        print('='*70)
+        print('✅ UPLOAD COMPLETED')
+        print(f'📌 Photo ID: {photo_id}')
+        print(f'👤 Faces: {len(faces_data)}')
+        print(f'☁️  Dropbox: ✓')
+        print(f'📦 Compressed: {"✓" if compress_success else "✗"}')
+        print('='*70 + '\n')
         
         return jsonify({
             'success': True,
@@ -506,119 +572,17 @@ def photographer_upload():
             'faces_detected': len(faces_data),
             'dropbox_uploaded': True,
             'compressed': compress_success
-        })
+        }), 201
         
     except Exception as e:
-        print(f"❌ Upload error: {str(e)}")
-        return jsonify({'success': False, 'error': str(e)})
+        print('='*70)
+        print('❌ UPLOAD ERROR')
+        print(f'Error: {str(e)}')
+        print('='*70 + '\n')
         
-@app.route('/api/face/extract_embedding', methods=['POST', 'OPTIONS'])
-@cross_origin()
-def extract_face_embedding():
-    """
-    Extract face embedding from base64 image
-    Used by authentication backend for user registration and face login
-    """
-    if request.method == 'OPTIONS':
-        return '', 204
-    
-    try:
-        data = request.json
-        
-        # Validate input
-        if not data or 'face_image' not in data:
-            return jsonify({
-                'success': False,
-                'error': 'face_image is required'
-            }), 400
-        
-        image_data = data['face_image']
-        
-        # Handle base64 with or without prefix
-        if ',' in image_data:
-            image_data = image_data.split(',')[1]
-        
-        # Decode base64 image
-        try:
-            nparr = np.frombuffer(base64.b64decode(image_data), np.uint8)
-            frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-            
-            if frame is None:
-                return jsonify({
-                    'success': False,
-                    'error': 'Invalid image data'
-                }), 400
-                
-        except Exception as e:
-            return jsonify({
-                'success': False,
-                'error': f'Failed to decode image: {str(e)}'
-            }), 400
-        
-        # Convert to RGB for face detection
-        img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        img_pil = Image.fromarray(img_rgb)
-        
-        # Detect faces
-        boxes, probs = face_system.mtcnn.detect(img_pil)
-        
-        if boxes is None or len(boxes) == 0:
-            return jsonify({
-                'success': False,
-                'error': 'No face detected. Please ensure your face is clearly visible and well-lit.'
-            }), 400
-        
-        # Use the first (most prominent) face
-        box = boxes[0]
-        confidence = float(probs[0]) if probs is not None else 0.0
-        
-        # Validate face detection confidence
-        if confidence < 0.9:
-            return jsonify({
-                'success': False,
-                'error': 'Face detection confidence too low. Please use a clearer photo.'
-            }), 400
-        
-        # Extract face region with padding
-        x1, y1, x2, y2 = [int(coord) for coord in box]
-        
-        # Add padding
-        width = x2 - x1
-        height = y2 - y1
-        expand_x = int(width * 0.2)
-        expand_y = int(height * 0.25)
-        
-        x1 = max(0, x1 - expand_x)
-        y1 = max(0, y1 - expand_y)
-        x2 = min(frame.shape[1], x2 + expand_x)
-        y2 = min(frame.shape[0], y2 + expand_y)
-        
-        # Crop and enhance face
-        face_img = img_pil.crop((x1, y1, x2, y2))
-        face_img = face_system.enhance_face_image(face_img)
-        face_img = face_img.resize((160, 160), Image.LANCZOS)
-        
-        # Normalize face image
-        face_array = np.array(face_img).astype(np.float32)
-        face_array = (face_array - 127.5) / 128.0
-        face_tensor = torch.from_numpy(face_array).permute(2, 0, 1)
-        
-        # Extract embedding
-        embedding = face_system.extract_embedding(face_tensor)
-        
-        return jsonify({
-            'success': True,
-            'embedding': embedding.tolist(),
-            'confidence': confidence,
-            'face_detected': True,
-            'message': 'Face embedding extracted successfully'
-        })
-        
-    except Exception as e:
-        print(f"❌ Extract embedding error: {str(e)}")
         return jsonify({
             'success': False,
-            'error': f'Failed to process face: {str(e)}'
+            'error': str(e)
         }), 500
     
 @app.route('/api/photographer/photos', methods=['GET', 'OPTIONS'])
