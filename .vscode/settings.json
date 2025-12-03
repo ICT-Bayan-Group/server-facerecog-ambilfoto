@@ -1,0 +1,3 @@
+{
+  "python.analysis.extraPaths": ["./token/mysql_", "./token/mysql_", "./token/mysql_", "./token/mysql_", "./token/mysql_", "./token/mysql_"]
+}
