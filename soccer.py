@@ -6,7 +6,10 @@ from PIL import Image
 import torch
 from facenet_pytorch import MTCNN, InceptionResnetV1
 import pickle
+import mysql.connector
+from mysql.connector import Error
 import os
+from dotenv import load_dotenv
 from datetime import datetime
 import base64
 import io
@@ -23,6 +26,9 @@ import dropbox
 from dropbox.exceptions import ApiError, AuthError
 from dropbox.files import WriteMode
 
+load_dotenv()
+
+
 app = Flask(__name__)
 CORS(app, resources={
     r"/api/*": {
@@ -32,8 +38,101 @@ CORS(app, resources={
     }
 })
 
+# MySQL Configuration
+MYSQL_CONFIG = {
+    'host': os.getenv('DB_HOST', '172.28.176.1'),
+    'port': int(os.getenv('DB_PORT', 3306)),
+    'user': os.getenv('DB_USER', 'root'),
+    'password': os.getenv('DB_PASSWORD', ''),
+    'database': os.getenv('DB_NAME', 'af_db')
+}
+def get_db_connection():
+    """Get MySQL database connection"""
+    try:
+        connection = mysql.connector.connect(**MYSQL_CONFIG)
+        if connection.is_connected():
+            return connection
+    except Error as e:
+        print(f"❌ Database connection error: {e}")
+        return None
+
+def save_photo_match(user_id, event_photo_id, distance, similarity_score, confidence_score):
+    """Save photo match to database"""
+    connection = get_db_connection()
+    if not connection:
+        return False
+    
+    try:
+        cursor = connection.cursor()
+        
+        # Check if match already exists
+        check_query = """
+            SELECT id FROM user_photo_matches 
+            WHERE user_id = %s AND event_photo_id = %s
+        """
+        cursor.execute(check_query, (user_id, event_photo_id))
+        existing = cursor.fetchone()
+        
+        if existing:
+            # Update existing match
+            update_query = """
+                UPDATE user_photo_matches 
+                SET distance = %s, 
+                    similarity_score = %s, 
+                    confidence_score = %s,
+                    matched_at = NOW()
+                WHERE id = %s
+            """
+            cursor.execute(update_query, (distance, similarity_score, confidence_score, existing[0]))
+            print(f"✅ Updated match: {existing[0]}")
+        else:
+            # Insert new match
+            import uuid
+            match_id = str(uuid.uuid4())
+            insert_query = """
+                INSERT INTO user_photo_matches 
+                (id, user_id, event_photo_id, distance, similarity_score, confidence_score, matched_at)
+                VALUES (%s, %s, %s, %s, %s, %s, NOW())
+            """
+            cursor.execute(insert_query, (match_id, user_id, event_photo_id, distance, similarity_score, confidence_score))
+            print(f"✅ Created match: {match_id}")
+        
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return True
+        
+    except Error as e:
+        print(f"❌ Save match error: {e}")
+        if connection:
+            connection.close()
+        return False
+
+def get_event_photo_id_by_ai_photo_id(ai_photo_id):
+    """Get event_photo_id from ai_photo_id"""
+    connection = get_db_connection()
+    if not connection:
+        return None
+    
+    try:
+        cursor = connection.cursor(dictionary=True)
+        query = "SELECT id FROM event_photos WHERE ai_photo_id = %s AND is_deleted = 0"
+        cursor.execute(query, (ai_photo_id,))
+        result = cursor.fetchone()
+        cursor.close()
+        connection.close()
+        
+        if result:
+            return result['id']
+        return None
+        
+    except Error as e:
+        print(f"❌ Query error: {e}")
+        if connection:
+            connection.close()
+        return None
 # ==================== DROPBOX CONFIGURATION ====================
-DROPBOX_ACCESS_TOKEN ="sl.u.AGJAgOJqdS0BMqg8ubB8iXc80JQ3B-7xx1g7iE9PMu_xB5oqy3P98IF-5SLCbsC-4YioP4GKOjyFe9IDWU33QMNSZ-uj7krmS6CAa2Sz_5h8z1DMhpUayTlOIb_QtLkPGsY98IlVyFPzxhcTuRoWUii8qtSOFNGRjRDyEeVkYA7BFVOljOZFdpYn3tPLkWnifIJ3Azo086bLt0bo9o7Gmvbh_v434YAd92l9baPVav1YEbWpBYT32-QHVsdzSI14fposVZ4VPu4hh8hVFK7Gl2Nluwb_-unVs4eba9x3ltrg_w6S-SKe4AqrKD5-LkmSIzQeBoNRsKJo0IPTmpToR4Nho2Vq2dna-fMGDjALPsxyJSSNOEDJKJQnswcZl_hGwUW_IlSGchZOB-gKrXoC8vHcWYV5KdeV79ee8pJVf7dL3Hm-OUosBeT9TY2IkOhbS8loRgTiUHJKN77TmhTPYAr43r1Xmdz1xpgoKdQz1Hd5YfYCUJWPwvNlPaBpOicB7e1PCIfjqzrdITwNizLEE7csWF14bEoHsNqcx2HcPYI4fvCfI-x4b0h7EHg0k0_LlwX5SdOg-pdrkWWXgr-VxMHnN3L7HEsousmBu-zK-oZVOJLXmspzhoMLf6NA8XioHCMGYbK_k7ShNdTsSaH5Ds_Ea5TQ4dojcADfBKm5uiojuagyCEAEcT5wLh2CfPpkZhfwv5h5juVwXD7g3_YeNEl8yUUiEZfBlYgJbozEhMA2elzcfVDHYrm-w5soRVcawGne3q5j1ZDrOO8gThhNJWSEodnkVj6EOeG8jL_aUUkajLYMpYtzg5iwuV4J6eBCNM2BfILDVn8xsw0DeqyZj8PPRNqA-CEWVwoveZNSZCFw1Ku5v8hSAnjIz5UFGp3Jqu0NRf2AXbvlBeUMKRq9dKvIbsMNa7r2DiS8q93frHOPIFV210GyODy48Mk_JAVoaYsAMNxkn1Fl5ufYLhJo3UzVWkqmKgs18zimXYDxY119k67mELmANy9EscezO_3kE3hcp3pRGdXAgzvlnIfcJR76QABDtzOzYW4-GhvF3KyHO3PFxfuVMLM0jzFuBs25ePZ924wIJ3IKlnvHcabjYAi2xrwBDjF7VVklQCXzhYS0KDmFP-UyxKoHs_pZTPKpiZzcxL6E3LWydT9pMUUw-spGP-N5unmYKteDDIeg2eHaRmxnbQy_V85vctd4xakPUH9oFdfG8-asoDEzoXTVnsQ35LnJZp-FUrrNeVCl7Zb5pBd5CZvJkZG9BLaaifGayRUcCRLBL44VM5wWYPNmzYhA7-IqUtrNLrtNaawJfeWsOWXBBSr2txTGaOW5pGiu-cZ_DYyV1M8S21upxoAZHRzHvJ0JlpYy_qp_8bJLqJGsflOhSD6uQ5UdWEKxKHQDBYw7eif5_Sh8o-aN6m7SFhu58MNMlp3LmtabDQYLYGnm-SbfKGRrnG3An88MegOO_qSok6hB2_6KCk-k0U-HwS6SBm_vd-Cw_r75o5v1FXoXHw"
+DROPBOX_ACCESS_TOKEN ="sl.u.AGPZ--_8-wCocOoUwuhRL9nnFc68rDYfBI5JrXI9R2ZL5U9ms92GGm9yqg6vEyHRgQ3i2UuUQ8hk2RgxLavTJQxW1hxGWM2QL7GEn5IRMTKYQSQOhE5FXmgjtnO4j_yEodRT3QGoJNF4vEcpAfmVj03fI-jRPp7p-6nVprpuHnjLrsw5lgKqR9kzrFlmhp4eyV1w7zV78dufvZiEN7gyqXcxkYUrgY-nsEtAeDWjMrm8qA85MdAnUjFukRgA_ZzfEVCCH51lP2a7IHR82aznnmhveXzhOWzxDBhuOHXPCUm86wWqZpfJxxuKmC824WtiJ329P8EzD3wP_OzajI30HW3_axhxuN5I7uvSNNrDWmA6M_8hJANbxz2dQff7rpRSc1Da7I7W1eukPToKqrDrv60GpXnHJsYJCXP0cnIPLdzPUagyH6-MMVV0Jt6rNccCe-fLeb8SBrNZlNcB2tyOaQ_RQLxtSMaqPLvUGzBecFJDh0HqtPDIxBgouQZynuvXi45px_SuM6J90Z9MGrHrlKK5F0jvWYn6PShVnDLdE3gbCY4ApcsuuqqPbsC1gWVEc643gMvBn8hUoUO51uLdhWjp4sxWTEhzOPMmdyRyk2Ss4z_gdwkXi-CDWhOINZ0WfVfdWyJU--X_qhbFbtf2IKARBAz5-SOku3AmOpxbL7U32fFC9ZlmuwFpewRR_3dQz7U4Wlt-oz00CRQZP_E3Sawco1QsYnEUUbP2yW8tfw3695lyRAkJWwy0dfpA9HODk0AjKGaTuLXo1k04Mx0by06mCWzO2L2axR5XO2dK5CRA9FkIuNvwVpmusjPA-kYO76z7uJhtR9XIZgWrdTTfl_zGQvZDkAHHtIaeUQaEJwVCWFrMViwszR8cs1Z52rs5FS2aP8XuGeJjvk4gt7JIDH00lLvI-rYS2xAlDJHpbenbRzY047BTYCo4h6DK1QHDlidmAxaRVQgZgI-w6zW8gxZ86FEOEKObOo0Q-d7_GavNce38Whekbq19yq5CZiu6hx1Z5bcLXyFfAOkLtlepEZJDA2eTaXEtp_pdOltT6ZXOU92QJG7nqaJqfI9KFMbICShudkypK-PFPCVsaAKiMTm4k2ObGdrcpqh75suI21VHLOxh2nDjN_rfkdiL5Jb8gLmlqNGG0sP0MJBIrBwT4MUKDTWk2eDDvP0fCVc564Urs0ZEZU9sE260mFe-5cfwQkTtbQ_doypXoK68lusCmhaXCEThgXfVGnPeg22vQ-BTHa7_ouhY_ONMRfkKYm2SzKNHs8UcrgZM18SfHVW0ocajwqGRqA78vwf7bMuWo3NindZmAs6_oJsRXIh98huBWs4VgBE4YtP7WHp_6v9Ys7dq5A_bChCN_j2AcuM3c2cnhOG35L6mEVQgZC3YO9Dq7YtE33ziemJ4cYuZ5Pz7v7sW"
 DROPBOX_FOLDER = "/tes-ambilfoto"
 
 # ==================== STORAGE PATHS ====================
@@ -657,15 +756,75 @@ def user_register_face():
 @app.route('/api/user/my_photos', methods=['POST', 'OPTIONS'])
 @cross_origin()
 def get_user_photos():
-    """Get user's matched photos"""
+    """Get user's matched photos - WITH DATABASE SYNC"""
     if request.method == 'OPTIONS':
         return '', 204
     
     try:
+        # ✅ DEBUG: Log the raw request
+        print("="*70)
+        print("📥 REQUEST DEBUG INFO")
+        print("="*70)
+        print(f"Content-Type: {request.content_type}")
+        print(f"Request data type: {type(request.data)}")
+        print(f"Request data: {request.data[:200] if request.data else 'None'}")
+        
         data = request.json
-        user_embedding = data['embedding']
+        print(f"Parsed JSON: {data is not None}")
+        
+        if data:
+            print(f"Keys in data: {list(data.keys())}")
+            print(f"user_id value: {data.get('user_id')}")
+            print(f"user_id type: {type(data.get('user_id'))}")
+            print(f"embedding exists: {data.get('embedding') is not None}")
+            print(f"embedding length: {len(data.get('embedding', [])) if isinstance(data.get('embedding'), list) else 'N/A'}")
+        
+        print("="*70)
+        
+        user_embedding = data.get('embedding')
+        user_id = data.get('user_id')
+        
+        # ✅ Better error messages
+        if not user_embedding:
+            return jsonify({
+                'success': False, 
+                'error': 'Embedding is required',
+                'debug': {'received_keys': list(data.keys()) if data else []}
+            }), 400
+        
+        if not user_id:
+            return jsonify({
+                'success': False, 
+                'error': 'User ID is required',
+                'debug': {
+                    'received_keys': list(data.keys()) if data else [],
+                    'user_id_value': user_id,
+                    'user_id_type': str(type(user_id))
+                }
+            }), 400
+        
+        print(f"🔍 Face matching for user: {user_id}")
         
         matched_photos = face_system.match_user_face(user_embedding)
+        
+        # Save matches to database
+        saved_count = 0
+        for match in matched_photos:
+            photo_id = match['photo_id']
+            distance = match['distance']
+            cosine_sim = match['cosine_similarity']
+            
+            # Get event_photo_id from ai_photo_id
+            event_photo_id = get_event_photo_id_by_ai_photo_id(photo_id)
+            
+            if event_photo_id:
+                similarity_score = 1 - distance
+                confidence_score = cosine_sim
+                
+                if save_photo_match(user_id, event_photo_id, distance, similarity_score, confidence_score):
+                    saved_count += 1
+        
+        print(f"✅ Saved {saved_count}/{len(matched_photos)} matches to database")
         
         photos = []
         for match in matched_photos:
@@ -677,12 +836,25 @@ def get_user_photos():
                 'filename': photo_data['filename'],
                 'metadata': photo_data.get('metadata', {}),
                 'distance': match['distance'],
+                'cosine_similarity': match['cosine_similarity'],
                 'in_dropbox': photo_data.get('dropbox_path') is not None
             })
         
-        return jsonify({'success': True, 'photos': photos})
+        return jsonify({
+            'success': True, 
+            'photos': photos,
+            'matches_saved_to_db': saved_count
+        })
+        
     except Exception as e:
-        return jsonify({'success': False, 'error': str(e), 'photos': []})
+        print(f"❌ Error: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False, 
+            'error': str(e), 
+            'photos': []
+        }), 500
 
 @app.route('/api/image/preview/<photo_id>', methods=['GET', 'OPTIONS'])
 @cross_origin()

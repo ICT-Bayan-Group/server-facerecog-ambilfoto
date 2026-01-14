@@ -1,2 +1,9 @@
 /uploads/
 *.pkl
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+.env/
