@@ -46,11 +46,11 @@ CORS(app, resources={
 
 # MySQL Configuration
 MYSQL_CONFIG = {
-    'host': os.getenv('DB_HOST', '172.28.176.1'),
+    'host': os.getenv('localhost', '172.28.176.1'),
     'port': int(os.getenv('DB_PORT', 3306)),
     'user': os.getenv('DB_USER', 'root'),
     'password': os.getenv('DB_PASSWORD', ''),
-    'database': os.getenv('DB_NAME', 'af_db')
+    'database': os.getenv('DB_NAME', 'fotomap_db')
 }
 
 def get_db_connection():
@@ -136,7 +136,7 @@ def get_event_photo_id_by_ai_photo_id(ai_photo_id):
         return None
 
 # ==================== DROPBOX CONFIGURATION ====================
-DROPBOX_ACCESS_TOKEN = "sl.u.AGO6TYXjNVPmf4OzZb9K9W5Vj5Utub4v-i3QQEaJjyrjzyhzIiqJFx4JRqphvXeda1FIOlREVUqPhIqOAZkY5NJnbRMjaq4nVslqZSj2VpbxWc3wwsmDjKd5m2j21841qV-n1hz9qF7ccL8yc9Ne8s5tXSY6lPBujmZs1fGirGehF0JASz_7BxrZWEw9c6r2YPJ0RfYBBfugbobFr-1UmwghPzIvmO_Qb6D_N9PmIRNPVLoDlX5YR8_fQ2SDvxWjFIRuXJoB8TNJgMGVrsVVjGVWq5Ko9EcR8P9ddeYZ4aI2OFAMQ86DU9_jlP43Sm6O0t6XN_WB5cfwZJoBrpowNXElybj0DJePqXwlOxQzC7Md9_ii-ETS7lnZZIOPqZWYmnQwdMwYvjJoHNqI99gGl2VRANnOQTR-i_lcVR_LykKQ6aLpA8Qp8w7CjjwM2AMYOMQAPBgswTz6_min_ysnMxP13m0kwqfRnHLV_8o0Fywo05cK5vHgTDBasuXeLkz9AnK-8Q984qvlECKb0t5wBhYZRvhE5FB3lA97m4BF97qFiaKtBog4edfV0E-mGzjCwcx9iMbSJviFhQuEWs8_LPD5Qd0oor9BABvKLQvXwhc6gWRYFCb5v3EJ_hCatPmUMJg1oW-GD7H3ilYlxM88UWAbTHLM4snVNtPZnVy_rl1uDHvlehwF5-yrQpsGVK8qgOfQe5GNv4XaNk3ChohIZQxkUCt9iVcHbxxSfPT_ffW6OYJBtQrei5cJT2NZhUoWmvVy5FUcxI23lkICgP9Rnc3iRIZl1upRmSyKPIXQ01uSzuoKPHOTUUZhNOuopZzYFsWEup8P_RWgkaNkmqNduqFVFAfn2tRMndR8wpiqrVxozxN0uvNAt2WkpQyv8DJneQTrpQuSz0pY0AHHQiwvyu_Rj4D04hFnTHjGqaKHmYFK-BbOqQb6l0D-MvTbC7JjvcZuzGGXV0fJf8MpBJdgtMXFvhc8zWsBkvAjx8-U1dgjHXvmmqMmHeztwhSxUikNoXz539CtcpdjF0Uz4RapERFAbSZJJCYwBJ4I7GjYRv-lCMeDfsKWfBGCElmwV5KHdM7JdBcvEur72BaCBzuhtVU3aDYGEglmuEAQ97P0XvJBxZj5P4TRw6BAbHeuqiXmX1MBFTch-MRGO3NoNt-Ih6AJiYQjoCDRCM9rtTQ_RAuYM2WEOLDXjJV5VLvbvnb6NyJ4YhvjgjOsPHNRXSwApem2vA_4JMChAS_7KeW72U_neQg8aEjgrjxet6kBGSkzgqDTsNCgJFeNNvUeMg_U0-Uq0R58l2goXMr4zCrtN0pzmez7LlZuP1zs3tj_T0uXlXn_zT9Ke4aAzL63D2pWjYO-Ds7jUUz-NXT99SMO-F-udqTNmD7ga1sRLUpW9TaJijDLLflvoQBl5qvsiPq4FSoZ"
+DROPBOX_ACCESS_TOKEN = "sl.u.AGQUTU9X2GCQ0dGxkDTwGceatoMjSIv8rJZzJK8ghn8DO3ivW1dgyMPzmV-2fog94LzsNYlQG_Y3HEoqi0gKVd0lEb382gcLK2QrGfWoIgg44mAkY9_9RzwAIBhZK5nJTzcb6AeAKd0kiKUCxKtIeNmePWWVdUY3ZiWDlT8g8Rf87IvuwxBug3ov57vFxuyw_PmCULTWKwM8bojfkZLPIKnSdwldOJ0gVP9YqMo6Bxgg7JMAgejD8xwfWDgT1p8sU6QM3BXJ9nwKzR6OsSaq7AqrVe2Gw6tgdrh4flmh5QxwqMg6AnyrDIovK2hmKJxPklRXzzoUJ0dGraH16DqcpU0OLfq9z1YxvGsaR9E8on40bTrw6wegDJtrXJRk4yiZQPA_vKE25WvO22S3yulygmDhzvQWbJouvE-0nRSlAwlj1drzKQHyHczuOAUtdNzpmwY0GkRl8c-AY5Bk2ELxYXaSVr65HczETbIXbMpKrKp3q4G1CHFa9HuFAnoEuo7bIMI4JjvegKjyds7mLNrU9-q0xkLOuJg58FaYtFKMth1WXoP7muDZ--lP5CGgtQ1Jlki888TfEOI1t8OYxVGNRuiaJQRNDQRWwZUnit2zfYRjX3h5SZCJP0n7guzVUMFdFJ4bqwhcqfpDPbJiQlPoDL-mhhnby8O-CWl5TAfYsyAVSByoZGVH3OHg5aetZPROld6FPLVa9-VJFGklPJEO2nUIXrKQJrOcbsza9ukiNnT6QgXHkJ5tLsRl5G95G2PHJg6__e6mG1Mw3Lo6C7YnLlvYeWiT_lZVy74CnHj4mgMO562r2f_NUejgglGf-htU1WSiNHQmUiGsOdF_D7MIPIRtZ7t_7A6X27-SPca8--MVQukwD3Rv9ybDW7NONHoz-WihvZEqT87vklrl_fE5GRh4MwENkk6Xlth5pugib0Yig_DT7eeNvonyi4gdDJUeadaw7rQeJh4CWEAnNRTdGp7NAYsJwNkjYkBBGXfpSXVFSZQ6CbGAA6KMWTfpJKKkOT6bm54wNNICIO5QLYzdTu0wb0BVg3V39dx8XXuhqWFufWVDJQpzxZX3jhIX3C_KivmUBdFyHBUcyTRnDXFO4EWhpc_3uD6oWkthAlX-09PdBnoi3NyLHqzv4xBuzUJCR8Tux8WA5USkSRa4m5kXNbKpusA6GZBV7wzCYly0iRgCJQ7CRbAWmZgGIAax-raovfYjD8V4FnrW62q-q0LEVjrwdV4r-YZyI1FCxbrpdHrEBK7RaV9N5ul2jJixFkvEqq9tt-1MUI0M3Z537EE2MAFujyN61aILmqLGHDZ8IGZJZGdbDhVfg1v_xJyT3t1lGgZPw6ZWTPP3U_ewIAiqyp5f4NkKY1glOxcDgj596gG234v8vUvVrHTSbdPVLEywJPYs4cVGPlSgLmRRbLhNFQoIjsPhl6k7WqEQo8mj5PfuSQ"
 DROPBOX_FOLDER = "/tes-ambilfoto"
 
 # ==================== STORAGE PATHS ====================
@@ -971,6 +971,144 @@ def download_from_dropbox(photo_id):
             'success': False,
             'error': str(e),
             'photo_id': photo_id
+        }), 500
+
+# Tambahkan di app.py setelah endpoint download_from_dropbox
+
+@app.route('/api/photo/download_direct/<photo_id>', methods=['GET', 'OPTIONS'])
+@cross_origin()
+def download_photo_direct(photo_id):
+    """
+    ✅ NEW: Download photo directly as binary (for hi-res purchased photos)
+    This endpoint sends the actual file bytes, not a redirect
+    """
+    if request.method == 'OPTIONS':
+        return '', 204
+    
+    try:
+        # Get photo data from database
+        photo_data = face_system.photo_database['photos'].get(photo_id)
+        if not photo_data:
+            return jsonify({
+                'success': False, 
+                'error': 'Photo not found'
+            }), 404
+        
+        dropbox_path = photo_data.get('dropbox_path')
+        if not dropbox_path:
+            return jsonify({
+                'success': False, 
+                'error': 'File not in Dropbox'
+            }), 404
+        
+        if not dropbox_manager.dbx:
+            return jsonify({
+                'success': False, 
+                'error': 'Dropbox not available'
+            }), 503
+        
+        print(f'📥 Direct download request for: {photo_id}')
+        print(f'   Dropbox path: {dropbox_path}')
+        
+        # ✅ Download file from Dropbox to memory
+        try:
+            metadata, response = dropbox_manager.dbx.files_download(dropbox_path)
+            file_bytes = response.content
+            
+            print(f'✅ Downloaded from Dropbox: {len(file_bytes) / 1024 / 1024:.2f}MB')
+            
+            # Determine filename
+            filename = photo_data.get('filename', f'photo-{photo_id}.jpg')
+            
+            # ✅ Send file as binary with proper headers
+            return send_file(
+                BytesIO(file_bytes),
+                mimetype='image/jpeg',
+                as_attachment=True,
+                download_name=filename,
+                max_age=0  # No caching
+            )
+            
+        except dropbox.exceptions.ApiError as e:
+            error_msg = str(e)
+            print(f'❌ Dropbox API error: {error_msg}')
+            
+            if 'not_found' in error_msg.lower():
+                return jsonify({
+                    'success': False,
+                    'error': 'File not found in Dropbox',
+                    'dropbox_path': dropbox_path
+                }), 404
+            else:
+                return jsonify({
+                    'success': False,
+                    'error': f'Dropbox error: {error_msg}'
+                }), 500
+        
+    except Exception as e:
+        print(f'❌ Download error: {str(e)}')
+        import traceback
+        traceback.print_exc()
+        
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'photo_id': photo_id
+        }), 500
+
+
+@app.route('/api/photo/get_base64/<photo_id>', methods=['POST', 'OPTIONS'])
+@cross_origin()
+def get_photo_base64(photo_id):
+    """
+    ✅ ALTERNATIVE: Get photo as base64 (if direct binary doesn't work)
+    This returns JSON with base64 string - less efficient but more compatible
+    """
+    if request.method == 'OPTIONS':
+        return '', 204
+    
+    try:
+        photo_data = face_system.photo_database['photos'].get(photo_id)
+        if not photo_data:
+            return jsonify({
+                'success': False,
+                'error': 'Photo not found'
+            }), 404
+        
+        dropbox_path = photo_data.get('dropbox_path')
+        if not dropbox_path or not dropbox_manager.dbx:
+            return jsonify({
+                'success': False,
+                'error': 'File not available'
+            }), 404
+        
+        print(f'📥 Base64 request for: {photo_id}')
+        
+        # Download from Dropbox
+        metadata, response = dropbox_manager.dbx.files_download(dropbox_path)
+        file_bytes = response.content
+        
+        # Convert to base64
+        base64_data = base64.b64encode(file_bytes).decode('utf-8')
+        
+        # Add data URL prefix
+        image_data_url = f'data:image/jpeg;base64,{base64_data}'
+        
+        print(f'✅ Converted to base64: {len(base64_data) / 1024:.1f}KB')
+        
+        return jsonify({
+            'success': True,
+            'photo_id': photo_id,
+            'filename': photo_data.get('filename'),
+            'face_image': image_data_url,  # ✅ Full data URL format
+            'metadata': photo_data.get('metadata', {})
+        })
+        
+    except Exception as e:
+        print(f'❌ Error: {str(e)}')
+        return jsonify({
+            'success': False,
+            'error': str(e)
         }), 500
 
 
