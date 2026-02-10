@@ -136,7 +136,7 @@ def get_event_photo_id_by_ai_photo_id(ai_photo_id):
         return None
 
 # ==================== DROPBOX CONFIGURATION ====================
-DROPBOX_ACCESS_TOKEN = "sl.u.AGQUTU9X2GCQ0dGxkDTwGceatoMjSIv8rJZzJK8ghn8DO3ivW1dgyMPzmV-2fog94LzsNYlQG_Y3HEoqi0gKVd0lEb382gcLK2QrGfWoIgg44mAkY9_9RzwAIBhZK5nJTzcb6AeAKd0kiKUCxKtIeNmePWWVdUY3ZiWDlT8g8Rf87IvuwxBug3ov57vFxuyw_PmCULTWKwM8bojfkZLPIKnSdwldOJ0gVP9YqMo6Bxgg7JMAgejD8xwfWDgT1p8sU6QM3BXJ9nwKzR6OsSaq7AqrVe2Gw6tgdrh4flmh5QxwqMg6AnyrDIovK2hmKJxPklRXzzoUJ0dGraH16DqcpU0OLfq9z1YxvGsaR9E8on40bTrw6wegDJtrXJRk4yiZQPA_vKE25WvO22S3yulygmDhzvQWbJouvE-0nRSlAwlj1drzKQHyHczuOAUtdNzpmwY0GkRl8c-AY5Bk2ELxYXaSVr65HczETbIXbMpKrKp3q4G1CHFa9HuFAnoEuo7bIMI4JjvegKjyds7mLNrU9-q0xkLOuJg58FaYtFKMth1WXoP7muDZ--lP5CGgtQ1Jlki888TfEOI1t8OYxVGNRuiaJQRNDQRWwZUnit2zfYRjX3h5SZCJP0n7guzVUMFdFJ4bqwhcqfpDPbJiQlPoDL-mhhnby8O-CWl5TAfYsyAVSByoZGVH3OHg5aetZPROld6FPLVa9-VJFGklPJEO2nUIXrKQJrOcbsza9ukiNnT6QgXHkJ5tLsRl5G95G2PHJg6__e6mG1Mw3Lo6C7YnLlvYeWiT_lZVy74CnHj4mgMO562r2f_NUejgglGf-htU1WSiNHQmUiGsOdF_D7MIPIRtZ7t_7A6X27-SPca8--MVQukwD3Rv9ybDW7NONHoz-WihvZEqT87vklrl_fE5GRh4MwENkk6Xlth5pugib0Yig_DT7eeNvonyi4gdDJUeadaw7rQeJh4CWEAnNRTdGp7NAYsJwNkjYkBBGXfpSXVFSZQ6CbGAA6KMWTfpJKKkOT6bm54wNNICIO5QLYzdTu0wb0BVg3V39dx8XXuhqWFufWVDJQpzxZX3jhIX3C_KivmUBdFyHBUcyTRnDXFO4EWhpc_3uD6oWkthAlX-09PdBnoi3NyLHqzv4xBuzUJCR8Tux8WA5USkSRa4m5kXNbKpusA6GZBV7wzCYly0iRgCJQ7CRbAWmZgGIAax-raovfYjD8V4FnrW62q-q0LEVjrwdV4r-YZyI1FCxbrpdHrEBK7RaV9N5ul2jJixFkvEqq9tt-1MUI0M3Z537EE2MAFujyN61aILmqLGHDZ8IGZJZGdbDhVfg1v_xJyT3t1lGgZPw6ZWTPP3U_ewIAiqyp5f4NkKY1glOxcDgj596gG234v8vUvVrHTSbdPVLEywJPYs4cVGPlSgLmRRbLhNFQoIjsPhl6k7WqEQo8mj5PfuSQ"
+DROPBOX_ACCESS_TOKEN = "sl.u.AGSWjaAyP73rghl1Uym2wmDnwBJK4WoBY96EAEsWFGDumy0f7DKmmVIV7Qu0-rBPazAdKkc8sP8Y8WnuEjqMZpcLx2tPBIHjghru3YwuFgl13oxxEvmJs-PWhY46YhI75Ca6aqQXwfjBU_Y9WVaoo_8EA_EoPfNOcdb9ghxmNRYGMlR_OFrWKIAQdlHnvMRbeZOCzafbw2nwkLONmDgs5pZqFkxBmOJJb5ETHXppTguK31T1_le0EMQdXrsn3TPit3Pj5S-yaiX7WqGI-chWqPUHrhmhcQvoIKflvzkIzeCwHWOCq6r_m8qux5UHwXHE7ot_gR1jQ6Kkuo-ysuznqRL7ESSjFR4bQylDpIiyqZlm4FvrKHMlPP_1WOkkLrXCRNDiZ16kgv-FhQD_nLBgXCw2zBbexynhhyKcOxs4qNzIY4_jKTPNu4dNIqonTJayKrld_o-11lonISoBQO1xKJq3P6SLm3cYxk6cRjbOzh4lDokTIZVsCtH0vpnxXCgj2vx-atZ-xbxJZ-pQOGZMQ9WYw61FZVLl_dMivnmAjiQmV7hi9ji4EWz0tnpl45am4MRqSOcXhASGVFR4YycuRRsb2wVa0MlOy0jgHo400LoYT0I68nkiMjJ3JgPzpgv9IJQuKO3bg9laTGCpD-CRtluTiN4pCWFnNAL6Ca7Sa4_90e99YrgflrZTvUo9rXqDGE_irwxp05yLNX_0vFtXYtSyAzwtQE0TSQ8tc6onF0VSyYRHsw9nlT4C_zAXkpJXzxOejo6p8w8Qbm40m_fD_aMVioXmfdOiKhbNn0isEsaYhm6tkyxHaPjwGF93aBuzH22TGGV7S-QZrKiOZRmFbIc0xQg8N8h4RqATu5QF8K6OR4ZL-rM9uosVZAcZ3vyPRfnqvKZe_btyeg-PHk8ooEOTBEVzN9FMI9VLkbmmXYS2W4XpynACLYQnWQtMhsvTwL5AwlBwns35BWBJ217NWPeTfJlf2hlY2pZFIYGuyG97VY609bRZM9bjwx5M3P8tzR4LEXqNVLezpHKhpe25vnscqXi6UAhRu-ychnuPmvQ4APVivtneb4vRLzXe1GQhRLmkk87bvFLiDuebhnj36kqoJmaPzfCQD70mmnRy-49Z8bVUXriu2HiMnx8zo1GDLwRNXikO4OvDb-MnpFjuViM_OCh5Z_TW3x-0k1JxgaIgPDVevia8ubbS8tGizhCAEkJB6t4r35MD5bHpaxVFf9Yib01HDRe8aPe1QenHrllsmuU7awZ_DCVQ-t8zXbpzgTm-y5R_nt3FkPG-g6A7YihbEsrzLZS68WgkFMl1CrK8F1H086lhAvF317y5PEpvvAwVD6O0yk_UdW6Und7NcZgBmspSZQnwdnjw6Hq3EhmaSDCUfAWgXuRHYSKPsceDmDLOkQK8nvQibp8Ib3Nl6sK39nz11AO4LJUpWNWqJFe-ZA"
 DROPBOX_FOLDER = "/tes-ambilfoto"
 
 # ==================== STORAGE PATHS ====================
@@ -794,43 +794,140 @@ def get_photographer_photos():
 @app.route('/api/user/register_face', methods=['POST', 'OPTIONS'])
 @cross_origin()
 def user_register_face():
-    """User registers face"""
+    """User registers face - FIXED VERSION"""
     if request.method == 'OPTIONS':
         return '', 204
     
     try:
         data = request.json
+        
+        # ✅ FIX 1: Validate input
+        if not data or 'image' not in data:
+            return jsonify({
+                'success': False,
+                'error': 'No image data provided'
+            }), 400
+        
         image_data = data['image']
         
-        nparr = np.frombuffer(base64.b64decode(image_data.split(',')[1]), np.uint8)
-        frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        # ✅ FIX 2: Clean base64 string properly
+        try:
+            # Remove data URI prefix if exists
+            if ',' in image_data:
+                image_data = image_data.split(',')[1]
+            
+            # Remove any whitespace
+            image_data = image_data.strip()
+            
+            # Decode base64
+            image_bytes = base64.b64decode(image_data)
+            nparr = np.frombuffer(image_bytes, np.uint8)
+            frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+            
+            if frame is None:
+                return jsonify({
+                    'success': False,
+                    'error': 'Failed to decode image - invalid image data'
+                }), 400
+                
+        except Exception as decode_error:
+            print(f"❌ Image decode error: {str(decode_error)}")
+            return jsonify({
+                'success': False,
+                'error': f'Image decode error: {str(decode_error)}'
+            }), 400
         
+        # ✅ FIX 3: Detect faces with proper error handling
         img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         img_pil = Image.fromarray(img_rgb)
         
-        boxes, _ = face_system.mtcnn.detect(img_pil)
+        print(f"🔍 Detecting faces in image {img_pil.size}...")
+        boxes, probs = face_system.mtcnn.detect(img_pil)
         
+        # ✅ FIX 4: Check if faces detected BEFORE accessing array
         if boxes is None or len(boxes) == 0:
-            return jsonify({'success': False, 'error': 'No face detected'})
+            print("⚠️  No face detected in image")
+            return jsonify({
+                'success': False,
+                'error': 'No face detected in image',
+                'faces_detected': 0
+            }), 200  # Return 200 but success=false
         
-        box = boxes[0]
-        x1, y1, x2, y2 = [int(coord) for coord in box]
-        x1, y1 = max(0, x1), max(0, y1)
-        x2 = min(frame.shape[1], x2)
-        y2 = min(frame.shape[0], y2)
+        print(f"✅ Detected {len(boxes)} face(s)")
         
-        face_img = img_pil.crop((x1, y1, x2, y2))
-        face_img = face_img.resize((160, 160))
+        # ✅ FIX 5: Extract first face with bounds checking
+        try:
+            box = boxes[0]
+            x1, y1, x2, y2 = [int(coord) for coord in box]
+            
+            # Validate coordinates
+            x1 = max(0, x1)
+            y1 = max(0, y1)
+            x2 = min(frame.shape[1], x2)
+            y2 = min(frame.shape[0], y2)
+            
+            # Check if face region is valid
+            if x2 <= x1 or y2 <= y1:
+                return jsonify({
+                    'success': False,
+                    'error': 'Invalid face region detected'
+                }), 200
+            
+            # Crop and resize face
+            face_img = img_pil.crop((x1, y1, x2, y2))
+            face_img = face_img.resize((160, 160), Image.LANCZOS)
+            
+            # Convert to tensor
+            face_array = np.array(face_img).astype(np.float32)
+            face_array = (face_array - 127.5) / 128.0
+            face_tensor = torch.from_numpy(face_array).permute(2, 0, 1)
+            
+            # ✅ FIX 6: Extract embedding with error handling
+            embedding = face_system.extract_embedding(face_tensor)
+            
+            if embedding is None or len(embedding) == 0:
+                return jsonify({
+                    'success': False,
+                    'error': 'Failed to extract face embedding'
+                }), 200
+            
+            print(f"✅ Face embedding extracted: {len(embedding)} dimensions")
+            print(f"   Confidence: {float(probs[0]):.2%}")
+            
+            # ✅ FIX 7: Return proper JSON response
+            return jsonify({
+                'success': True,
+                'embedding': embedding.tolist(),
+                'faces_detected': len(boxes),
+                'confidence': float(probs[0])
+            }), 200
+            
+        except Exception as extraction_error:
+            print(f"❌ Face extraction error: {str(extraction_error)}")
+            import traceback
+            traceback.print_exc()
+            
+            return jsonify({
+                'success': False,
+                'error': f'Face extraction failed: {str(extraction_error)}'
+            }), 500
         
-        face_array = np.array(face_img).astype(np.float32)
-        face_array = (face_array - 127.5) / 128.0
-        face_tensor = torch.from_numpy(face_array).permute(2, 0, 1)
+    except KeyError as e:
+        print(f"❌ Missing required field: {str(e)}")
+        return jsonify({
+            'success': False,
+            'error': f'Missing required field: {str(e)}'
+        }), 400
         
-        embedding = face_system.extract_embedding(face_tensor)
-        
-        return jsonify({'success': True, 'embedding': embedding.tolist()})
     except Exception as e:
-        return jsonify({'success': False, 'error': str(e)})
+        print(f"❌ Unexpected error in register_face: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
 
 
 @app.route('/api/user/my_photos', methods=['POST', 'OPTIONS'])
