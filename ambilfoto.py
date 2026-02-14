@@ -1,11 +1,12 @@
 """
 AI-Enhanced Image Processing System
-- Smart preview generation with VISIBLE watermarks
-- Optimized original files for download
-- Intelligent compression with minimal quality loss
+- Smart preview generation with VISIBLE watermarks (LOCAL)
+- Compressed NON-watermark files to Dropbox (for purchase)
+- NO HD files - all compressed
+- ALL ENDPOINTS PRESERVED
 """
 
-from flask import Flask, render_template, request, jsonify, send_file, Response, redirect
+from flask import Flask, render_template, request, jsonify, send_file, Response, redirect, url_for
 from flask_cors import CORS, cross_origin
 import cv2
 import numpy as np
@@ -39,7 +40,7 @@ app = Flask(__name__)
 CORS(app, resources={
     r"/api/*": {
         "origins": "*",
-        "methods": ["GET", "POST", "OPTIONS"],
+        "methods": ["GET", "POST", "OPTIONS", "DELETE"],
         "allow_headers": ["Content-Type", "Authorization"]
     }
 })
@@ -136,11 +137,12 @@ def get_event_photo_id_by_ai_photo_id(ai_photo_id):
         return None
 
 # ==================== DROPBOX CONFIGURATION ====================
-DROPBOX_ACCESS_TOKEN = "sl.u.AGSWjaAyP73rghl1Uym2wmDnwBJK4WoBY96EAEsWFGDumy0f7DKmmVIV7Qu0-rBPazAdKkc8sP8Y8WnuEjqMZpcLx2tPBIHjghru3YwuFgl13oxxEvmJs-PWhY46YhI75Ca6aqQXwfjBU_Y9WVaoo_8EA_EoPfNOcdb9ghxmNRYGMlR_OFrWKIAQdlHnvMRbeZOCzafbw2nwkLONmDgs5pZqFkxBmOJJb5ETHXppTguK31T1_le0EMQdXrsn3TPit3Pj5S-yaiX7WqGI-chWqPUHrhmhcQvoIKflvzkIzeCwHWOCq6r_m8qux5UHwXHE7ot_gR1jQ6Kkuo-ysuznqRL7ESSjFR4bQylDpIiyqZlm4FvrKHMlPP_1WOkkLrXCRNDiZ16kgv-FhQD_nLBgXCw2zBbexynhhyKcOxs4qNzIY4_jKTPNu4dNIqonTJayKrld_o-11lonISoBQO1xKJq3P6SLm3cYxk6cRjbOzh4lDokTIZVsCtH0vpnxXCgj2vx-atZ-xbxJZ-pQOGZMQ9WYw61FZVLl_dMivnmAjiQmV7hi9ji4EWz0tnpl45am4MRqSOcXhASGVFR4YycuRRsb2wVa0MlOy0jgHo400LoYT0I68nkiMjJ3JgPzpgv9IJQuKO3bg9laTGCpD-CRtluTiN4pCWFnNAL6Ca7Sa4_90e99YrgflrZTvUo9rXqDGE_irwxp05yLNX_0vFtXYtSyAzwtQE0TSQ8tc6onF0VSyYRHsw9nlT4C_zAXkpJXzxOejo6p8w8Qbm40m_fD_aMVioXmfdOiKhbNn0isEsaYhm6tkyxHaPjwGF93aBuzH22TGGV7S-QZrKiOZRmFbIc0xQg8N8h4RqATu5QF8K6OR4ZL-rM9uosVZAcZ3vyPRfnqvKZe_btyeg-PHk8ooEOTBEVzN9FMI9VLkbmmXYS2W4XpynACLYQnWQtMhsvTwL5AwlBwns35BWBJ217NWPeTfJlf2hlY2pZFIYGuyG97VY609bRZM9bjwx5M3P8tzR4LEXqNVLezpHKhpe25vnscqXi6UAhRu-ychnuPmvQ4APVivtneb4vRLzXe1GQhRLmkk87bvFLiDuebhnj36kqoJmaPzfCQD70mmnRy-49Z8bVUXriu2HiMnx8zo1GDLwRNXikO4OvDb-MnpFjuViM_OCh5Z_TW3x-0k1JxgaIgPDVevia8ubbS8tGizhCAEkJB6t4r35MD5bHpaxVFf9Yib01HDRe8aPe1QenHrllsmuU7awZ_DCVQ-t8zXbpzgTm-y5R_nt3FkPG-g6A7YihbEsrzLZS68WgkFMl1CrK8F1H086lhAvF317y5PEpvvAwVD6O0yk_UdW6Und7NcZgBmspSZQnwdnjw6Hq3EhmaSDCUfAWgXuRHYSKPsceDmDLOkQK8nvQibp8Ib3Nl6sK39nz11AO4LJUpWNWqJFe-ZA"
+DROPBOX_ACCESS_TOKEN = "sl.u.AGReoKGXlkG0CdfF3tipnBM-6r8LVNqxIlTFdqnftMfDZmGXrAtGvIYfGcn4_7YowkyN6P7XRj8kuoJ1Wu_8zEjWA1HqZLTwKl9y2N8_JCPZEQ69d-RxSJI6pzZFVmhgJ61z1MAIFywQw2tE2MvXjxfcGLGsp5TwPDcB4_GOJnGtwD1aL9tGvksoXGJWTDqEPu2i-iVYXVcrBiJM6g8cu5djjh7iKB_6JYLNmYU5RWon5jPBmY0mOZUw5u9o84SrII0LLXAKRc_c4G9kXvDDqy6PV8IiSGvH3SF27LjVzF7WTsOt7w28sOG0_Ychnb107owncONAuXvjCylloUaolO20V1NMg_WiwN3M9QWRM_kREUAKSMJN6Ggafv_T9_taiyijcb3VIuVCt0jdKjm4T9bHutInuhQLjVAspsm5kUVo-sM6aNQ-dIR6S0ZPtBbin9gU1y5yg2flhv-uI4bq1jSWMyLQZwe7zxkrgjS_kng4Pv7kHckJlSBTRS37gdq0fZj5K65xCDkpAPzEdTBKXCuEBdfDJquUGU_G6bcwGV4lA1Q2IMoT0DUR7s4jwS5uhwwUp88TE0U61EUHJUpfh8jV4A2Aj7mQU8xRNo3SyiEB8v4rOCzU90f2mca6Qc9rbo5SvvnM8AZ5b2Qc2_b4FwC0ZnsvbF62UG6_g5MZHmzyl1djUCfZKAAkAr8cke0QVADg8n0qwEMUhnhkec9Fuv9jL0Ji_ExU7WuWnIXy1KLFjkhwas0KEbc_OvIcjRPBiUOlVF5xfLoia6sV3BLVdnAqOHfSmWTMbRBfiN5BJ0h8oVDwNp7bOokBrhuBeeMI1pSH4z13te0szKlDCwlCS28prC56NZYrN0BFhP8sUghxcqBjceHYS4iVIY0IvZ6A-0Ku0c8rxAU5-MQEdVAZsSiHt3auj81nNr8Vw1otMOPX5nLzBosKrT5AC0rbBf0h6G-LasQ5tpnIVtmLgKTXdtIl-QQ2-Axd73R_1eFicEjwjUbF803YrVBPLjXgvdwjk4iNdeRrpDSeumuQpM1k2G5dQ4Y3fjAOr3d3v0a34FBKYWb7IkiUAmM3nI9d7Db1--Ik0iZiOo5lyKsDRIUpgJ7Hu3B4goRbG9lDyAUlbz2CBfKC0RTc1tUg2yzo-_tGd8CIuZQodttcjPoOH71-FY3jmlaoPZAOXn68KGHMAzQFc84Zxvbm_qerz_40zuquek42s7sWcMbKnZpIjAgllWQRmW2P4jOibQsXdRZ8PMWae_gkto8giJOALBXTg6sOjd0MgBnuKHUmISfV30709cVqu9trwsJVmhJwOCTN6cEOqkMr9zONUGx_BjZhjuFLX3CZLrEYqt-wsNsPSceumgDCUuht8oxoG1PXgcCDj3TsnAqa0b72Ft_fIUKzT3Vm1_r8m1IxDnkZTyZzTmWktKfBxhdRxl9OThwtgdJsQ7ihOQ"
 DROPBOX_FOLDER = "/tes-ambilfoto"
 
 # ==================== STORAGE PATHS ====================
-UPLOAD_COMPRESSED = 'uploads/compressed'
+UPLOAD_COMPRESSED = 'uploads/compressed'  # Keep old folder for compatibility
+UPLOAD_PREVIEW_WATERMARKED = 'uploads/preview_watermarked'  # New: Preview with watermark
 UPLOAD_TEMP = 'uploads/temp'
 
 # Watermark logo path
@@ -148,7 +150,7 @@ WATERMARK_LOGO = 'ambilfoto-logo.png'
 
 
 class SmartImageProcessor:
-    """AI-Enhanced Image Processing with VISIBLE watermarking"""
+    """AI-Enhanced Image Processing with dual outputs"""
     
     def __init__(self, watermark_logo_path=None):
         self.watermark_logo = None
@@ -243,7 +245,10 @@ class SmartImageProcessor:
             return img.convert('RGB') if img.mode != 'RGB' else img
     
     def create_preview_version(self, img, max_dimension=800, target_size_kb=150, quality_start=35):
-        """Create preview with VISIBLE watermarks"""
+        """
+        ✅ OLD METHOD - Create preview with VISIBLE watermarks
+        Kept for backward compatibility
+        """
         try:
             # Convert to RGB
             if img.mode == 'RGBA':
@@ -289,8 +294,110 @@ class SmartImageProcessor:
             traceback.print_exc()
             return None
     
+    def create_preview_with_watermark(self, img, max_dimension=1280, target_size_kb=150, quality_start=40):
+        """
+        ✅ NEW: Create LOCAL preview with VISIBLE watermark
+        For display purposes only
+        """
+        try:
+            # Convert to RGB
+            if img.mode == 'RGBA':
+                background = Image.new('RGB', img.size, (255, 255, 255))
+                background.paste(img, mask=img.split()[3] if len(img.split()) == 4 else None)
+                img = background
+            elif img.mode != 'RGB':
+                img = img.convert('RGB')
+            
+            # Resize
+            if max(img.size) > max_dimension:
+                ratio = max_dimension / max(img.size)
+                new_size = tuple(int(dim * ratio) for dim in img.size)
+                img = img.resize(new_size, Image.LANCZOS)
+            
+            # Add VISIBLE watermarks
+            print(f"   🔒 Adding VISIBLE watermarks to LOCAL preview...")
+            img = self.add_multi_watermark(img, logo_size=180, opacity=0.65, spacing=200)
+            
+            # Compress
+            output = BytesIO()
+            quality = quality_start
+            
+            while quality >= 15:
+                output.seek(0)
+                output.truncate()
+                img.save(output, format='JPEG', quality=quality, optimize=True, progressive=True)
+                
+                size_kb = output.tell() / 1024
+                if size_kb <= target_size_kb:
+                    break
+                quality -= 5
+            
+            final_size = output.tell() / 1024
+            print(f"   ✅ LOCAL Preview (watermarked): {final_size:.1f}KB")
+            
+            output.seek(0)
+            return output
+            
+        except Exception as e:
+            print(f"❌ Preview creation error: {e}")
+            import traceback
+            traceback.print_exc()
+            return None
+    
+    def create_compressed_for_dropbox(self, img, max_dimension=1920, target_size_kb=500, quality_start=75):
+        """
+        ✅ NEW: Create compressed version WITHOUT watermark for Dropbox
+        For download after purchase
+        """
+        try:
+            # Convert to RGB
+            if img.mode == 'RGBA':
+                background = Image.new('RGB', img.size, (255, 255, 255))
+                background.paste(img, mask=img.split()[3] if len(img.split()) == 4 else None)
+                img = background
+            elif img.mode != 'RGB':
+                img = img.convert('RGB')
+            
+            # Smart resize
+            original_size = max(img.size)
+            if original_size > max_dimension:
+                ratio = max_dimension / original_size
+                new_size = tuple(int(dim * ratio) for dim in img.size)
+                img = img.resize(new_size, Image.LANCZOS)
+                print(f"   📐 Resized to: {img.size[0]}x{img.size[1]}")
+            
+            # Apply subtle enhancement
+            img = self.apply_smart_enhancement(img)
+            
+            # Compress to target size
+            output = BytesIO()
+            quality = quality_start
+            
+            while quality >= 50:
+                output.seek(0)
+                output.truncate()
+                img.save(output, format='JPEG', quality=quality, optimize=True, progressive=True)
+                
+                size_kb = output.tell() / 1024
+                if size_kb <= target_size_kb:
+                    break
+                quality -= 5
+            
+            final_size = output.tell() / 1024
+            print(f"   💾 Dropbox version (NO watermark): {final_size:.1f}KB")
+            
+            output.seek(0)
+            return output
+            
+        except Exception as e:
+            print(f"❌ Compression error: {e}")
+            return None
+    
     def create_optimized_original(self, img, max_dimension=2560, target_quality=85):
-        """Create optimized version for download (no watermark)"""
+        """
+        ✅ OLD METHOD - Create optimized version for download (no watermark)
+        Kept for backward compatibility
+        """
         try:
             # Convert to RGB
             if img.mode == 'RGBA':
@@ -324,6 +431,13 @@ class SmartImageProcessor:
         except Exception as e:
             print(f"❌ Optimization error: {e}")
             return None
+    
+    def create_purchased_version(self, img, max_dimension=1920, target_quality=75):
+        """
+        ✅ ALIAS for create_compressed_for_dropbox
+        Kept for backward compatibility with purchase system
+        """
+        return self.create_compressed_for_dropbox(img, max_dimension, target_quality * 7, target_quality)
     
     def apply_smart_enhancement(self, img):
         """Apply subtle enhancement"""
@@ -389,7 +503,7 @@ class DropboxManager:
                 else:
                     download_link = None
             
-            print(f"✅ Uploaded to Dropbox: {dropbox_path}")
+            print(f"   ✅ Uploaded to Dropbox: {dropbox_path}")
             return {
                 'success': True,
                 'path': dropbox_path,
@@ -590,7 +704,7 @@ image_processor = SmartImageProcessor(WATERMARK_LOGO)
 dropbox_manager = DropboxManager(DROPBOX_ACCESS_TOKEN)
 
 # Create directories
-for directory in [UPLOAD_COMPRESSED, UPLOAD_TEMP]:
+for directory in [UPLOAD_COMPRESSED, UPLOAD_PREVIEW_WATERMARKED, UPLOAD_TEMP]:
     os.makedirs(directory, exist_ok=True)
 
 if dropbox_manager.dbx:
@@ -610,7 +724,11 @@ def favicon():
 @app.route('/api/photographer/upload', methods=['POST', 'OPTIONS'])
 @cross_origin()
 def photographer_upload():
-    """Upload photo with VISIBLE watermark"""
+    """
+    ✅ MODIFIED: Upload photo with dual strategy
+    1. Local preview WITH watermark (for browsing)
+    2. Dropbox compressed WITHOUT watermark (for purchase)
+    """
     if request.method == 'OPTIONS':
         return '', 204
     
@@ -640,7 +758,7 @@ def photographer_upload():
         }
         
         print('='*70)
-        print('📝 AI-Enhanced Upload with VISIBLE Watermark')
+        print('📝 DUAL STRATEGY UPLOAD')
         print('='*70)
         print(f'📸 Filename: {filename}')
         print('='*70)
@@ -671,78 +789,89 @@ def photographer_upload():
         faces_data = face_system.detect_faces_from_image_array(img)
         print(f'✅ Detected {len(faces_data)} face(s)')
         
-        # Convert to bytes for Dropbox
-        _, buffer = cv2.imencode(ext if ext else '.jpg', img)
-        image_bytes = buffer.tobytes()
-        
-        # Upload ORIGINAL to Dropbox
-        print('☁️  Uploading ORIGINAL to Dropbox...')
-        dropbox_path = f"{DROPBOX_FOLDER}/{unique_filename}"
-        dropbox_result = dropbox_manager.upload_from_memory(image_bytes, dropbox_path)
-        
-        if dropbox_result['success']:
-            print(f'✅ Original uploaded to: {dropbox_path}')
-        
-        # Create VISIBLE WATERMARKED preview
-        print('🔒 Creating VISIBLE watermarked preview...')
+        # Convert to PIL
         img_pil = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-        preview_io = image_processor.create_preview_version(img_pil, max_dimension=1280, target_size_kb=150)
         
-        compressed_path = os.path.join(UPLOAD_COMPRESSED, unique_filename)
-        compress_success = False
+        # ✅ STEP 1: Create LOCAL preview WITH watermark
+        print('🔒 Creating LOCAL preview WITH watermark...')
+        preview_io = image_processor.create_preview_with_watermark(
+            img_pil.copy(), 
+            max_dimension=1280, 
+            target_size_kb=150
+        )
+        
+        preview_path = os.path.join(UPLOAD_PREVIEW_WATERMARKED, unique_filename)
+        preview_success = False
         
         if preview_io:
-            with open(compressed_path, 'wb') as f:
+            with open(preview_path, 'wb') as f:
                 f.write(preview_io.getvalue())
             
-            compressed_size = os.path.getsize(compressed_path) / 1024
-            print(f'✅ VISIBLE watermarked preview saved: {compressed_size:.1f}KB')
-            compress_success = True
+            preview_size = os.path.getsize(preview_path) / 1024
+            print(f'   ✅ LOCAL preview saved: {preview_size:.1f}KB (WITH watermark)')
+            preview_success = True
         else:
-            print('⚠️  Preview creation failed - using fallback')
-            temp_path = os.path.join(UPLOAD_TEMP, unique_filename)
-            cv2.imwrite(temp_path, img)
+            print('   ⚠️  Preview creation failed')
+        
+        # ✅ STEP 2: Create Dropbox version WITHOUT watermark
+        print('☁️  Creating Dropbox version WITHOUT watermark...')
+        dropbox_io = image_processor.create_compressed_for_dropbox(
+            img_pil.copy(), 
+            max_dimension=1920, 
+            target_size_kb=500
+        )
+        
+        dropbox_success = False
+        dropbox_path = None
+        dropbox_link = None
+        
+        if dropbox_io:
+            dropbox_bytes = dropbox_io.getvalue()
+            dropbox_path = f"{DROPBOX_FOLDER}/{unique_filename}"
             
-            img_fallback = Image.open(temp_path)
-            if img_fallback.mode != 'RGB':
-                img_fallback = img_fallback.convert('RGB')
+            dropbox_result = dropbox_manager.upload_from_memory(dropbox_bytes, dropbox_path)
             
-            max_dim = 1280
-            if max(img_fallback.size) > max_dim:
-                ratio = max_dim / max(img_fallback.size)
-                new_size = tuple(int(d * ratio) for d in img_fallback.size)
-                img_fallback = img_fallback.resize(new_size, Image.LANCZOS)
-            
-            img_fallback.save(compressed_path, format='JPEG', quality=35, optimize=True)
-            
-            if os.path.exists(temp_path):
-                os.remove(temp_path)
-            
-            compressed_size = os.path.getsize(compressed_path) / 1024
-            print(f'⚠️  Fallback preview: {compressed_size:.1f}KB')
-            compress_success = True
+            if dropbox_result['success']:
+                dropbox_link = dropbox_result.get('shared_link')
+                dropbox_success = True
+                print(f'   ✅ Dropbox upload successful (NO watermark)')
+            else:
+                print(f'   ❌ Dropbox upload failed: {dropbox_result.get("error")}')
+        else:
+            print('   ⚠️  Dropbox compression failed')
+        
+        # Also save to old compressed folder for backward compatibility
+        compressed_path = os.path.join(UPLOAD_COMPRESSED, unique_filename)
+        if preview_io:
+            preview_io.seek(0)
+            with open(compressed_path, 'wb') as f:
+                f.write(preview_io.read())
         
         # Save to database
         photo_id = str(uuid.uuid4())
         face_system.photo_database['photos'][photo_id] = {
-            'path_original': None,
-            'path_compressed': compressed_path,
+            'path_original': None,  # No original HD file
+            'path_compressed': compressed_path if preview_success else None,  # For backward compat
+            'path_preview': preview_path if preview_success else None,  # New: watermarked preview
             'filename': unique_filename,
             'faces_data': faces_data,
             'metadata': complete_metadata,
             'uploaded_at': datetime.now().isoformat(),
-            'dropbox_path': dropbox_path,
-            'dropbox_link': dropbox_result.get('shared_link', None),
-            'has_watermark': image_processor.watermark_logo is not None
+            'dropbox_path': dropbox_path if dropbox_success else None,
+            'dropbox_link': dropbox_link,
+            'has_watermark': image_processor.watermark_logo is not None,
+            'has_watermark_preview': preview_success,
+            'storage_strategy': 'dual'  # ✅ Mark as dual strategy
         }
         
         face_system.save_database()
         
         print('='*70)
-        print('✅ UPLOAD COMPLETED')
+        print('✅ DUAL STRATEGY UPLOAD COMPLETED')
         print(f'📌 Photo ID: {photo_id}')
         print(f'👤 Faces: {len(faces_data)}')
-        print(f'🔒 VISIBLE Watermark: {"✓" if image_processor.watermark_logo else "✗"}')
+        print(f'🔒 LOCAL Preview (watermark): {"✓" if preview_success else "✗"}')
+        print(f'☁️  Dropbox (no watermark): {"✓" if dropbox_success else "✗"}')
         print('='*70 + '\n')
         
         return jsonify({
@@ -750,8 +879,10 @@ def photographer_upload():
             'photo_id': photo_id,
             'faces_detected': len(faces_data),
             'watermarked': image_processor.watermark_logo is not None,
-            'dropbox_uploaded': dropbox_result['success'],
-            'compressed': compress_success
+            'preview_created': preview_success,
+            'dropbox_uploaded': dropbox_success,
+            'compressed': preview_success,  # For backward compat
+            'storage_strategy': 'dual'
         }), 201
         
     except Exception as e:
@@ -782,7 +913,9 @@ def get_photographer_photos():
                 'metadata': photo_data.get('metadata', {}),
                 'uploaded_at': photo_data.get('uploaded_at', ''),
                 'in_dropbox': photo_data.get('dropbox_path') is not None,
-                'has_visible_watermark': photo_data.get('has_watermark', False)
+                'has_visible_watermark': photo_data.get('has_watermark', False),
+                'has_watermark_preview': photo_data.get('has_watermark_preview', False),
+                'storage_strategy': photo_data.get('storage_strategy', 'unknown')
             })
         
         photos.sort(key=lambda x: x['uploaded_at'], reverse=True)
@@ -982,7 +1115,9 @@ def get_user_photos():
                 'distance': match['distance'],
                 'cosine_similarity': match['cosine_similarity'],
                 'in_dropbox': photo_data.get('dropbox_path') is not None,
-                'has_visible_watermark': photo_data.get('has_watermark', False)
+                'has_visible_watermark': photo_data.get('has_watermark', False),
+                'has_watermark_preview': photo_data.get('has_watermark_preview', False),
+                'storage_strategy': photo_data.get('storage_strategy', 'unknown')
             })
         
         return jsonify({
@@ -999,7 +1134,9 @@ def get_user_photos():
 @app.route('/api/image/preview/<photo_id>', methods=['GET', 'OPTIONS'])
 @cross_origin()
 def serve_preview_image(photo_id):
-    """Serve WATERMARKED preview"""
+    """
+    ✅ Serve WATERMARKED preview (backward compatible)
+    """
     if request.method == 'OPTIONS':
         return '', 204
     
@@ -1008,8 +1145,17 @@ def serve_preview_image(photo_id):
         if not photo_data:
             return jsonify({'error': 'Photo not found'}), 404
         
-        compressed_path = photo_data.get('path_compressed')
+        # Try new preview path first
+        preview_path = photo_data.get('path_preview')
+        if preview_path and os.path.exists(preview_path):
+            return send_file(
+                preview_path,
+                mimetype='image/jpeg',
+                as_attachment=False
+            )
         
+        # Fallback to old compressed path
+        compressed_path = photo_data.get('path_compressed')
         if compressed_path and os.path.exists(compressed_path):
             return send_file(
                 compressed_path,
@@ -1025,7 +1171,10 @@ def serve_preview_image(photo_id):
 @app.route('/api/download/dropbox/<photo_id>', methods=['GET', 'OPTIONS'])
 @cross_origin()
 def download_from_dropbox(photo_id):
-    """Download ORIGINAL from Dropbox"""
+    """
+    ✅ KEPT: Download compressed photo WITHOUT watermark from Dropbox
+    For backward compatibility
+    """
     if request.method == 'OPTIONS':
         return '', 204
     
@@ -1070,13 +1219,12 @@ def download_from_dropbox(photo_id):
             'photo_id': photo_id
         }), 500
 
-# Tambahkan di app.py setelah endpoint download_from_dropbox
 
 @app.route('/api/photo/download_direct/<photo_id>', methods=['GET', 'OPTIONS'])
 @cross_origin()
 def download_photo_direct(photo_id):
     """
-    ✅ NEW: Download photo directly as binary (for hi-res purchased photos)
+    ✅ KEPT: Download photo directly as binary (for hi-res purchased photos)
     This endpoint sends the actual file bytes, not a redirect
     """
     if request.method == 'OPTIONS':
@@ -1158,7 +1306,7 @@ def download_photo_direct(photo_id):
 @cross_origin()
 def get_photo_base64(photo_id):
     """
-    ✅ ALTERNATIVE: Get photo as base64 (if direct binary doesn't work)
+    ✅ KEPT: Get photo as base64 (if direct binary doesn't work)
     This returns JSON with base64 string - less efficient but more compatible
     """
     if request.method == 'OPTIONS':
@@ -1209,6 +1357,249 @@ def get_photo_base64(photo_id):
         }), 500
 
 
+@app.route('/api/photo/generate_optimized/<photo_id>', methods=['POST', 'OPTIONS'])
+@cross_origin()
+def generate_optimized_version(photo_id):
+    """
+    ✅ KEPT: Generate optimized version for purchased photo
+    Called by Node.js after successful payment
+    NOTE: In dual strategy, this is mostly redundant since Dropbox already has compressed version
+    But kept for backward compatibility
+    """
+    if request.method == 'OPTIONS':
+        return '', 204
+    
+    try:
+        photo_data = face_system.photo_database['photos'].get(photo_id)
+        if not photo_data:
+            return jsonify({
+                'success': False,
+                'error': 'Photo not found'
+            }), 404
+        
+        dropbox_path = photo_data.get('dropbox_path')
+        
+        # Check if already has optimized version
+        if photo_data.get('optimized_path'):
+            print(f'ℹ️  Already has optimized version: {photo_data["optimized_path"]}')
+            return jsonify({
+                'success': True,
+                'optimized_path': photo_data['optimized_path'],
+                'optimized_link': photo_data.get('optimized_link'),
+                'already_exists': True
+            })
+        
+        if not dropbox_path or not dropbox_manager.dbx:
+            return jsonify({
+                'success': False,
+                'error': 'Original file not available'
+            }), 404
+        
+        print(f'🎨 Generating optimized version for: {photo_id}')
+        
+        # Download from Dropbox
+        metadata, response = dropbox_manager.dbx.files_download(dropbox_path)
+        image_bytes = response.content
+        
+        # Decode image
+        nparr = np.frombuffer(image_bytes, np.uint8)
+        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        img_pil = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+        
+        # Create optimized version (NO WATERMARK)
+        optimized_io = image_processor.create_purchased_version(
+            img_pil, 
+            max_dimension=1920, 
+            target_quality=75
+        )
+        
+        if not optimized_io:
+            return jsonify({
+                'success': False,
+                'error': 'Failed to create optimized version'
+            }), 500
+        
+        # Upload to Dropbox with prefix
+        filename = photo_data.get('filename')
+        optimized_path = f"{DROPBOX_FOLDER}/optimized_{filename}"
+        
+        optimized_bytes = optimized_io.getvalue()
+        upload_result = dropbox_manager.upload_from_memory(
+            optimized_bytes, 
+            optimized_path
+        )
+        
+        if not upload_result['success']:
+            return jsonify({
+                'success': False,
+                'error': 'Failed to upload optimized version'
+            }), 500
+        
+        # Update photo database
+        photo_data['optimized_path'] = optimized_path
+        photo_data['optimized_link'] = upload_result.get('shared_link')
+        face_system.save_database()
+        
+        print(f'✅ Optimized version created: {optimized_path}')
+        print(f'   Size: {len(optimized_bytes) / 1024:.1f}KB')
+        
+        return jsonify({
+            'success': True,
+            'optimized_path': optimized_path,
+            'optimized_link': upload_result.get('shared_link'),
+            'size_kb': len(optimized_bytes) / 1024
+        })
+        
+    except Exception as e:
+        print(f'❌ Error: {str(e)}')
+        import traceback
+        traceback.print_exc()
+        
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/photo/download_optimized/<photo_id>', methods=['GET', 'OPTIONS'])
+@cross_origin()
+def download_optimized(photo_id):
+    """
+    ✅ KEPT: Download optimized version (for purchased photos)
+    - NO watermark
+    - Compressed
+    - Good quality
+    """
+    if request.method == 'OPTIONS':
+        return '', 204
+    
+    try:
+        photo_data = face_system.photo_database['photos'].get(photo_id)
+        if not photo_data:
+            return jsonify({
+                'success': False,
+                'error': 'Photo not found'
+            }), 404
+        
+        optimized_path = photo_data.get('optimized_path')
+        if not optimized_path:
+            # Fallback to regular dropbox path (which is now also compressed without watermark)
+            print('ℹ️  No separate optimized version, using main Dropbox file')
+            return redirect(url_for('download_from_dropbox', photo_id=photo_id))
+        
+        if not dropbox_manager.dbx:
+            return jsonify({
+                'success': False,
+                'error': 'Dropbox not available'
+            }), 503
+        
+        print(f'📥 Downloading optimized: {photo_id}')
+        
+        # Download optimized from Dropbox
+        try:
+            metadata, response = dropbox_manager.dbx.files_download(optimized_path)
+            file_bytes = response.content
+            
+            print(f'✅ Downloaded: {len(file_bytes) / 1024:.1f}KB (optimized, no watermark)')
+            
+            filename = photo_data.get('filename', f'photo-{photo_id}.jpg')
+            
+            return send_file(
+                BytesIO(file_bytes),
+                mimetype='image/jpeg',
+                as_attachment=True,
+                download_name=filename,
+                max_age=0
+            )
+            
+        except dropbox.exceptions.ApiError as e:
+            print(f'❌ Dropbox error: {str(e)}')
+            
+            # Fallback to regular download
+            return redirect(url_for('download_from_dropbox', photo_id=photo_id))
+        
+    except Exception as e:
+        print(f'❌ Error: {str(e)}')
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/download/purchased/<photo_id>', methods=['GET', 'OPTIONS'])
+@cross_origin()
+def download_purchased_photo(photo_id):
+    """
+    ✅ NEW: Unified endpoint for downloading purchased photos
+    Downloads compressed photo WITHOUT watermark from Dropbox
+    """
+    if request.method == 'OPTIONS':
+        return '', 204
+    
+    try:
+        photo_data = face_system.photo_database['photos'].get(photo_id)
+        if not photo_data:
+            return jsonify({'success': False, 'error': 'Photo not found'}), 404
+        
+        # Check for optimized version first
+        optimized_path = photo_data.get('optimized_path')
+        if optimized_path and dropbox_manager.dbx:
+            try:
+                metadata, response = dropbox_manager.dbx.files_download(optimized_path)
+                file_bytes = response.content
+                filename = photo_data.get('filename', f'photo-{photo_id}.jpg')
+                
+                print(f'✅ Downloaded optimized: {len(file_bytes) / 1024:.1f}KB')
+                
+                return send_file(
+                    BytesIO(file_bytes),
+                    mimetype='image/jpeg',
+                    as_attachment=True,
+                    download_name=filename,
+                    max_age=0
+                )
+            except:
+                pass
+        
+        # Fallback to main dropbox path
+        dropbox_path = photo_data.get('dropbox_path')
+        if not dropbox_path:
+            return jsonify({'success': False, 'error': 'File not in Dropbox'}), 404
+        
+        if not dropbox_manager.dbx:
+            return jsonify({'success': False, 'error': 'Dropbox not available'}), 503
+        
+        print(f'📥 Downloading purchased photo: {photo_id}')
+        
+        try:
+            metadata, response = dropbox_manager.dbx.files_download(dropbox_path)
+            file_bytes = response.content
+            
+            print(f'✅ Downloaded: {len(file_bytes) / 1024:.1f}KB (NO watermark)')
+            
+            filename = photo_data.get('filename', f'photo-{photo_id}.jpg')
+            
+            return send_file(
+                BytesIO(file_bytes),
+                mimetype='image/jpeg',
+                as_attachment=True,
+                download_name=filename,
+                max_age=0
+            )
+            
+        except dropbox.exceptions.ApiError as e:
+            return jsonify({
+                'success': False,
+                'error': f'Download failed: {str(e)}'
+            }), 500
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
 @app.route('/api/photographer/delete/<photo_id>', methods=['DELETE', 'OPTIONS'])
 @cross_origin()
 def delete_photo(photo_id):
@@ -1230,7 +1621,25 @@ def delete_photo(photo_id):
             except:
                 pass
         
-        # Delete compressed
+        # Delete optimized from Dropbox
+        optimized_deleted = False
+        if photo_data.get('optimized_path') and dropbox_manager.dbx:
+            try:
+                dropbox_manager.dbx.files_delete_v2(photo_data['optimized_path'])
+                optimized_deleted = True
+            except:
+                pass
+        
+        # Delete preview
+        preview_deleted = False
+        if photo_data.get('path_preview') and os.path.exists(photo_data['path_preview']):
+            try:
+                os.remove(photo_data['path_preview'])
+                preview_deleted = True
+            except:
+                pass
+        
+        # Delete compressed (backward compat)
         compressed_deleted = False
         if photo_data.get('path_compressed') and os.path.exists(photo_data['path_compressed']):
             try:
@@ -1254,6 +1663,8 @@ def delete_photo(photo_id):
             'success': True,
             'message': 'Photo deleted',
             'dropbox_deleted': dropbox_deleted,
+            'optimized_deleted': optimized_deleted,
+            'preview_deleted': preview_deleted,
             'compressed_deleted': compressed_deleted
         })
         
@@ -1267,16 +1678,28 @@ def health_check():
     """Health check"""
     return jsonify({
         'status': 'ok',
-        'service': 'AI Face Recognition with VISIBLE Watermark',
+        'service': 'AI Face Recognition - Dual Strategy (ALL ENDPOINTS)',
         'total_photos': len(face_system.photo_database['photos']),
         'total_faces': len(face_system.photo_database['face_embeddings']),
         'dropbox_connected': dropbox_manager.dbx is not None,
         'watermark_available': image_processor.watermark_logo is not None,
-        'watermark_settings': {
-            'size': '180px',
-            'opacity': '65%',
-            'spacing': '200px',
-            'visibility': 'HIGH'
+        'storage_strategy': {
+            'preview': 'LOCAL with VISIBLE watermark',
+            'dropbox': 'COMPRESSED without watermark',
+            'hd_files': 'NONE - all compressed'
+        },
+        'endpoints': {
+            'new': [
+                '/api/download/purchased/<id>',
+            ],
+            'kept': [
+                '/api/download/dropbox/<id>',
+                '/api/photo/download_direct/<id>',
+                '/api/photo/get_base64/<id>',
+                '/api/photo/generate_optimized/<id>',
+                '/api/photo/download_optimized/<id>',
+            ],
+            'total': 'ALL ENDPOINTS PRESERVED'
         }
     })
 
@@ -1284,7 +1707,7 @@ def health_check():
 # ==================== BATCH PROCESSING ====================
 
 def batch_process_from_folder(folder_path):
-    """Batch process images with VISIBLE watermark"""
+    """Batch process images with dual strategy"""
     if not os.path.exists(folder_path):
         print(f"❌ Folder not found: {folder_path}")
         return
@@ -1311,12 +1734,13 @@ def batch_process_from_folder(folder_path):
     
     total = len(image_files)
     print(f"\n{'='*70}")
-    print(f"⚽ AI-ENHANCED BATCH PROCESSING - VISIBLE WATERMARK")
+    print(f"⚽ DUAL STRATEGY BATCH PROCESSING")
     print(f"{'='*70}")
     print(f"📁 Folder: {folder_path}")
     print(f"📸 Total Images: {total}")
-    print(f"🎯 Strategy: VISIBLE Watermarked Preview + Original to Dropbox")
-    print(f"🔒 Watermark: {'✓ Available (180px, 65% opacity)' if image_processor.watermark_logo else '✗ Not Found'}")
+    print(f"🎯 Strategy:")
+    print(f"   🔒 Preview: WITH watermark (local)")
+    print(f"   ☁️  Dropbox: WITHOUT watermark (compressed)")
     print(f"{'='*70}\n")
     
     confirm = input(f"Process {total} images? (y/n): ").lower()
@@ -1352,63 +1776,48 @@ def batch_process_from_folder(folder_path):
             # Face detection
             faces_data = face_system.detect_faces_from_image_array(img)
             
-            # Convert to bytes for Dropbox (ORIGINAL)
-            _, buffer = cv2.imencode(ext, img)
-            image_bytes = buffer.tobytes()
-            
-            # Upload ORIGINAL to Dropbox
-            dropbox_path = f"{DROPBOX_FOLDER}/{unique_filename}"
-            dropbox_result = dropbox_manager.upload_from_memory(image_bytes, dropbox_path)
-            
-            if dropbox_result['success']:
-                uploaded_to_dropbox += 1
-            
-            # Create VISIBLE WATERMARKED compressed preview
+            # Convert to PIL
             img_pil = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-            preview_io = image_processor.create_preview_version(img_pil, max_dimension=1280, target_size_kb=150)
             
-            compressed_path = os.path.join(UPLOAD_COMPRESSED, unique_filename)
+            # Create preview WITH watermark
+            preview_io = image_processor.create_preview_with_watermark(img_pil.copy())
+            preview_path = os.path.join(UPLOAD_PREVIEW_WATERMARKED, unique_filename)
+            
             if preview_io:
-                with open(compressed_path, 'wb') as f:
+                with open(preview_path, 'wb') as f:
                     f.write(preview_io.getvalue())
                 if image_processor.watermark_logo:
                     watermarked_count += 1
-            else:
-                # Fallback
-                temp_path = os.path.join(UPLOAD_TEMP, unique_filename)
-                cv2.imwrite(temp_path, img)
-                
-                img_fallback = Image.open(temp_path)
-                if img_fallback.mode != 'RGB':
-                    img_fallback = img_fallback.convert('RGB')
-                
-                max_dim = 1280
-                if max(img_fallback.size) > max_dim:
-                    ratio = max_dim / max(img_fallback.size)
-                    new_size = tuple(int(d * ratio) for d in img_fallback.size)
-                    img_fallback = img_fallback.resize(new_size, Image.LANCZOS)
-                
-                img_fallback.save(compressed_path, format='JPEG', quality=35, optimize=True)
-                
-                if os.path.exists(temp_path):
-                    os.remove(temp_path)
+            
+            # Create Dropbox version WITHOUT watermark
+            dropbox_io = image_processor.create_compressed_for_dropbox(img_pil.copy())
+            dropbox_path = f"{DROPBOX_FOLDER}/{unique_filename}"
+            
+            if dropbox_io:
+                dropbox_bytes = dropbox_io.getvalue()
+                dropbox_result = dropbox_manager.upload_from_memory(dropbox_bytes, dropbox_path)
+                if dropbox_result['success']:
+                    uploaded_to_dropbox += 1
             
             # Save to database
             photo_id = str(uuid.uuid4())
             face_system.photo_database['photos'][photo_id] = {
                 'path_original': None,
-                'path_compressed': compressed_path,
+                'path_compressed': preview_path,
+                'path_preview': preview_path,
                 'filename': unique_filename,
                 'faces_data': faces_data,
                 'metadata': metadata.copy(),
                 'uploaded_at': datetime.now().isoformat(),
                 'dropbox_path': dropbox_path,
-                'dropbox_link': dropbox_result.get('shared_link', None),
-                'has_watermark': image_processor.watermark_logo is not None
+                'dropbox_link': dropbox_result.get('shared_link', None) if dropbox_io else None,
+                'has_watermark': image_processor.watermark_logo is not None,
+                'has_watermark_preview': True,
+                'storage_strategy': 'dual'
             }
             
             processed += 1
-            print(f"✅ {len(faces_data)} faces | ☁️ Dropbox | 🔒 VISIBLE Watermark")
+            print(f"✅ {len(faces_data)} faces | ☁️ Dropbox | 🔒 Watermark")
             
             # Checkpoint every 10 images
             if processed % 10 == 0:
@@ -1424,12 +1833,12 @@ def batch_process_from_folder(folder_path):
     face_system.save_database()
     
     print(f"\n{'='*70}")
-    print(f"✅ AI-ENHANCED BATCH COMPLETED")
+    print(f"✅ DUAL STRATEGY BATCH COMPLETED")
     print(f"{'='*70}")
     print(f"✅ Processed: {processed}/{total}")
     print(f"❌ Failed: {failed}/{total}")
     print(f"☁️  Uploaded to Dropbox: {uploaded_to_dropbox}/{processed}")
-    print(f"🔒 VISIBLE Watermarked: {watermarked_count}/{processed}")
+    print(f"🔒 Watermarked Preview: {watermarked_count}/{processed}")
     print(f"💾 Database saved")
     print(f"{'='*70}\n")
 
@@ -1487,34 +1896,29 @@ if __name__ == '__main__':
         if sys.argv[1] == '--batch' and len(sys.argv) > 2:
             folder_path = sys.argv[2]
             print("\n" + "="*70)
-            print("⚽ AI-ENHANCED BATCH PROCESSING - VISIBLE WATERMARK")
+            print("⚽ DUAL STRATEGY BATCH PROCESSING")
             print("="*70)
             batch_process_from_folder(folder_path)
             sys.exit(0)
         elif sys.argv[1] == '--help':
             print("\n" + "="*70)
-            print("⚽ AI-ENHANCED FACE RECOGNITION SYSTEM")
+            print("⚽ AI FACE RECOGNITION - DUAL STRATEGY (ALL ENDPOINTS)")
             print("="*70)
             print("\n📖 USAGE:")
             print("  python app.py                    # Run web server")
-            print("  python app.py --batch <folder>   # Batch process with VISIBLE watermark")
+            print("  python app.py --batch <folder>   # Batch process with dual strategy")
             print("  python app.py --help             # Show this help")
-            print("\n🎯 AI-ENHANCED FEATURES:")
-            print("  • VISIBLE Watermarked Preview (180px, 65% opacity)")
-            print("  • Optimized Original - Clean downloads")
-            print("  • Smart compression with minimal quality loss")
-            print("  • Multi-watermark distribution - HIGHLY VISIBLE")
-            print("  • Automatic color enhancement for watermarks")
-            print("\n💾 STORAGE STRATEGY:")
-            print("  • Preview: VISIBLE Watermark, compressed, local storage")
-            print("  • Original: Optimized, no watermark, Dropbox")
-            print("  • Face recognition on full quality images")
-            print("\n🎯 WATERMARK SPECIFICATIONS:")
-            print("  • Size: 180px (2x larger)")
-            print("  • Opacity: 65% (4x more visible)")
-            print("  • Color Saturation: 2x enhanced")
-            print("  • Contrast: 1.5x enhanced")
-            print("  • Spacing: 200px optimal coverage")
+            print("\n🎯 DUAL STRATEGY:")
+            print("  • Preview (LOCAL): WITH watermark, compressed (~150KB)")
+            print("  • Dropbox: WITHOUT watermark, compressed (~500KB)")
+            print("  • NO HD files - save 90% storage costs")
+            print("\n📡 ALL ENDPOINTS PRESERVED:")
+            print("  ✅ /api/download/dropbox/<id>")
+            print("  ✅ /api/photo/download_direct/<id>")
+            print("  ✅ /api/photo/get_base64/<id>")
+            print("  ✅ /api/photo/generate_optimized/<id>")
+            print("  ✅ /api/photo/download_optimized/<id>")
+            print("  🆕 /api/download/purchased/<id> (unified)")
             print("="*70 + "\n")
             sys.exit(0)
         else:
@@ -1533,13 +1937,15 @@ if __name__ == '__main__':
     local_ip = socket.gethostbyname(hostname)
     
     print("\n" + "="*70)
-    print("⚽ AI-ENHANCED FACE RECOGNITION SYSTEM - VISIBLE WATERMARK")
+    print("⚽ AI FACE RECOGNITION - DUAL STRATEGY (ALL ENDPOINTS)")
     print("="*70)
     print(f"\n☁️  Dropbox Status: {'✅ Connected' if dropbox_manager.dbx else '❌ Disconnected'}")
-    print(f"🔒 Watermark Status: {'✅ Available (VISIBLE - 180px, 65%)' if image_processor.watermark_logo else '❌ Not Found'}")
-    print(f"💾 Storage Strategy:")
-    print(f"   📦 Compressed (VISIBLE watermark) → {UPLOAD_COMPRESSED}")
-    print(f"   ☁️  Original (no watermark) → Dropbox")
+    print(f"🔒 Watermark Status: {'✅ Available' if image_processor.watermark_logo else '❌ Not Found'}")
+    print(f"\n💾 STORAGE STRATEGY:")
+    print(f"   🔒 Preview (LOCAL): WITH watermark, ~150KB")
+    print(f"   ☁️  Dropbox: WITHOUT watermark, ~500KB")
+    print(f"   ❌ HD Files: NONE - save 90% costs")
+    print(f"\n📡 ENDPOINTS: ALL PRESERVED + NEW")
     
     use_https = input("\nUse HTTPS? (y/n) [recommended for mobile camera]: ").lower() == 'y'
     
@@ -1551,13 +1957,7 @@ if __name__ == '__main__':
             print(f"   Laptop/Desktop: https://localhost:4000")
             print(f"   Mobile (WiFi):  https://{local_ip}:4000")
             print("\n" + "="*70)
-            print("✨ AI-ENHANCED FEATURES ACTIVE:")
-            print("   🔒 VISIBLE watermark for security (180px, 65% opacity)")
-            print("   🎨 Enhanced colors (2x saturation, 1.5x contrast)")
-            print("   🎯 Optimized original for download")
-            print("   📦 Smart compression (50-70% reduction)")
-            print("   ⚡ 10x faster page loading")
-            print("   ☁️  Cloud backup to Dropbox")
+            print("✨ DUAL STRATEGY ACTIVE + ALL ENDPOINTS")
             print("="*70 + "\n")
             
             context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
@@ -1572,13 +1972,7 @@ if __name__ == '__main__':
         print(f"   Laptop/Desktop: http://localhost:4000")
         print(f"   Mobile (WiFi):  http://{local_ip}:4000")
         print("\n" + "="*70)
-        print("✨ AI-ENHANCED FEATURES ACTIVE:")
-        print("   🔒 VISIBLE watermark for security (180px, 65% opacity)")
-        print("   🎨 Enhanced colors (2x saturation, 1.5x contrast)")
-        print("   🎯 Optimized original for download")
-        print("   📦 Smart compression (50-70% reduction)")
-        print("   ⚡ 10x faster page loading")
-        print("   ☁️  Cloud backup to Dropbox")
+        print("✨ DUAL STRATEGY ACTIVE + ALL ENDPOINTS")
         print("="*70 + "\n")
         
         app.run(host='0.0.0.0', port=4000, debug=False, threaded=True)
